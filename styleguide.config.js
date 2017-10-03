@@ -1,5 +1,5 @@
 const path = require("path");
-const webpackConfig = require("custom-react-scripts/config/webpack.config.dev.js");
+const webpackConfig = require("@tandem.ly/react-scripts/config/webpack.config.dev.js");
 
 module.exports = {
   components: "src/components/**/[A-Z]*.js",
