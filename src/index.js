@@ -1,9 +1,16 @@
 // @flow
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
-import App from "./containers/App";
+import createHistory from "history/createBrowserHistory";
+import Bootloader from "./containers/Bootloader";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import "./styles/index.css";
+
+const history = createHistory();
+
+ReactDOM.render(
+  <Bootloader history={history} />,
+  document.getElementById("root")
+);
 registerServiceWorker();
