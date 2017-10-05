@@ -52,3 +52,14 @@ $card-shadow: none;
   width: 250px;
   background-color: #dddddd;
 }
+
+.level.is-mobile .level-item:not(:last-child) {
+  margin-right: 0.75rem;
+}
+
+.hero .level-left {
+  padding-left: 1.5rem;
+  button {
+    margin-right: 1rem;
+  }
+}

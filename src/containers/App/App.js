@@ -7,25 +7,26 @@ const App = () => (
   <main>
     <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
     <section className="hero is-primary">
-      <div className="hero-body">
-        <div className="columns is-mobile is-vcentered">
-          <div className="column">
-            <a href="/">
-              <img alt="" className="logo" src="/images/logo.svg" />
-            </a>
+      <div className="level is-mobile">
+        <div className="level-left">
+          <div className="control is-hidden-tablet">
+            <button className="button is-secondary"><span className="icon-menu"></span></button>
           </div>
-          <div className="column">
-            <div className="card">
-              <div className="media">
-                <div className="media-content has-text-right">
-                  <p class="title is-4">Hi, Display Name</p>
-                  <p class="subtitle is-6">Customize your profile | <span className="icon-settings"></span> | <span className="icon-logout"></span></p>
-                </div>
-                <div className="media-right">
-                  <figure class="image is-48x48">
-                    <img src="https://avatarfiles.alphacoders.com/696/69632.jpg" alt="Placeholder image" />
-                  </figure>
-                </div>
+          <a href="/">
+            <img alt="" className="logo" src="/images/logo.svg" />
+          </a>
+        </div>
+        <div className="card level-right">
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content has-text-right is-hidden-mobile">
+                <p className="title is-4">Hi, Display Name</p>
+                <p className="subtitle is-6">Customize your profile | <span className="icon-settings"></span> | <span className="icon-logout"></span></p>
+              </div>
+              <div className="media-right">
+                <figure className="image is-48x48">
+                  <img src="https://avatarfiles.alphacoders.com/696/69632.jpg" alt="Placeholder image" />
+                </figure>
               </div>
             </div>
           </div>
@@ -33,14 +34,14 @@ const App = () => (
       </div>
     </section>
     <section className="columns is-gapless is-fluid">
-      <div className="column is-narrow">
+      <div className="column is-narrow is-hidden-mobile">
         <section className="section">
-          <aside class="menu">
+          <aside className="menu">
             <div className="-is-logged-in">
-              <h1 class="title is-1 balance">1.00m</h1>
-              <h6 class="subtitle is-6 full_balance">1,000,000.0080</h6>
-              <span class="tag is-primary is-medium change">+27,600</span>
-              <ul class="menu-list">
+              <h1 className="title is-1 balance">1.00m</h1>
+              <h6 className="subtitle is-6 full_balance">1,000,000.0080</h6>
+              <span className="tag is-primary is-medium change">+27,600</span>
+              <ul className="menu-list">
                 <li>
                   <a href="/"><span className="icon-transfer"></span>Transfer</a>
                 </li>
@@ -55,7 +56,7 @@ const App = () => (
                 </li>
               </ul>
             </div>
-            <ul class="menu-list">
+            <ul className="menu-list">
               <li>
                 <a href="/users">Users</a>
               </li>
@@ -88,7 +89,7 @@ const App = () => (
                   <div className="control">
                     <input type="text" name="amount" className="input" />
                   </div>
-                  <p class="help"><a>Use Full Balance</a></p>
+                  <p className="help"><a>Use Full Balance</a></p>
                 </div>
                 <div className="field">
                   <label className="label" for="memo">Memo</label>
@@ -96,19 +97,19 @@ const App = () => (
                     <input type="text" name="memo" className="input" />
                   </div>
                 </div>
-                <div class="field is-grouped">
-                  <div class="control">
-                    <button class="button is-primary">Submit</button>
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button className="button is-primary">Submit</button>
                   </div>
-                  <div class="control">
-                    <button class="button is-secondary">Clear</button>
+                  <div className="control">
+                    <button className="button is-secondary">Clear</button>
                   </div>
                 </div>
               </form>
             </section>
             <section className="section">
               <h3 className="title is-3">Transaction History</h3>
-              <div className="level box">
+              <div className="level box is-mobile">
                 <div className="level-left">
                   <div className="level-item">
                     <p className="subtitle is-6">July, 25</p>
@@ -129,7 +130,7 @@ const App = () => (
                   </div>
                 </div>
               </div>
-              <div className="level box">
+              <div className="level box is-mobile">
                 <div className="level-left">
                   <div className="level-item">
                     <p className="subtitle is-6">July, 25</p>
@@ -150,7 +151,7 @@ const App = () => (
                   </div>
                 </div>
               </div>
-              <div className="level box">
+              <div className="level box is-mobile">
                 <div className="level-left">
                   <div className="level-item">
                     <p className="subtitle is-6">July, 25</p>
@@ -171,7 +172,7 @@ const App = () => (
                   </div>
                 </div>
               </div>
-              <div className="level box">
+              <div className="level box is-mobile">
                 <div className="level-left">
                   <div className="level-item">
                     <p className="subtitle is-6">July, 25</p>
@@ -192,7 +193,7 @@ const App = () => (
                   </div>
                 </div>
               </div>
-              <div className="level box">
+              <div className="level box is-mobile">
                 <div className="level-left">
                   <div className="level-item">
                     <p className="subtitle is-6">July, 25</p>
@@ -213,8 +214,8 @@ const App = () => (
                   </div>
                 </div>
               </div>
-              <div class="control">
-                <button class="button is-primary">View All</button>
+              <div className="control">
+                <button className="button is-primary">View All</button>
               </div>
             </section>
           </div>
@@ -240,14 +241,16 @@ const App = () => (
             </section>
           </div>
         </div>
-        <footer className="columns section">
-          <div className="column is-half">
-            <small>Copyright 2017 | All Rights Reserved</small>
-          </div>
-          <div className="column is-half has-text-right">
-            <a href="/privacy">Privacy Policy</a>
-            <span> | </span>
-            <a href="/terms">Terms of Service</a>
+        <footer className="section">
+          <div className="columns">
+            <div className="column has-text-left-tablet has-text-centered-mobile">
+              <small>Copyright 2017 | All Rights Reserved</small>
+            </div>
+            <div className="column has-text-right-tablet has-text-centered-mobile">
+              <a href="/privacy">Privacy Policy</a>
+              <span> | </span>
+              <a href="/terms">Terms of Service</a>
+            </div>
           </div>
         </footer>
       </div>
