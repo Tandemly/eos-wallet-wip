@@ -43,16 +43,16 @@ const App = () => (
               <span className="tag is-primary is-medium change">+27,600</span>
               <ul className="menu-list">
                 <li>
-                  <a href="/"><span className="icon-transfer"></span>Transfer</a>
+                  <a href="/"><span className="icon-transfer"></span> Transfer</a>
                 </li>
                 <li>
-                  <a href="/transactions"><span className="icon-history"></span>Transaction History</a>
+                  <a href="/transactions"><span className="icon-history"></span> Transaction History</a>
                 </li>
                 <li>
-                  <a href="/permissions"><span className="icon-permissions"></span>Permission</a>
+                  <a href="/permissions"><span className="icon-permissions"></span> Permission</a>
                 </li>
                 <li>
-                  <a href="/"><span className="icon-logout"></span>Logout</a>
+                  <a href="/"><span className="icon-logout"></span> Logout</a>
                 </li>
               </ul>
             </div>
@@ -126,7 +126,7 @@ const App = () => (
                     <p className="subtitle is-6">$10.00</p>
                   </div>
                   <div className="level-item">
-                    <span className="icon-logout"></span>
+                    <span className="icon-transfer_to"></span>
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@ const App = () => (
                     <p className="subtitle is-6">$10.00</p>
                   </div>
                   <div className="level-item">
-                    <span className="icon-logout"></span>
+                    <span className="icon-transfer_from"></span>
                   </div>
                 </div>
               </div>
@@ -168,7 +168,7 @@ const App = () => (
                     <p className="subtitle is-6">$10.00</p>
                   </div>
                   <div className="level-item">
-                    <span className="icon-logout"></span>
+                    <span className="icon-transfer_to"></span>
                   </div>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const App = () => (
                     <p className="subtitle is-6">$10.00</p>
                   </div>
                   <div className="level-item">
-                    <span className="icon-logout"></span>
+                    <span className="icon-transfer_from"></span>
                   </div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ const App = () => (
                     <p className="subtitle is-6">$10.00</p>
                   </div>
                   <div className="level-item">
-                    <span className="icon-logout"></span>
+                    <span className="icon-transfer_to"></span>
                   </div>
                 </div>
               </div>

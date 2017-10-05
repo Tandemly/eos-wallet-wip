@@ -63,3 +63,8 @@ $card-shadow: none;
     margin-right: 1rem;
   }
 }
+
+// Transaction History
+.level.is-mobile .level-item:not(:last-child) {
+  margin-right: 0.75rem;
+}
