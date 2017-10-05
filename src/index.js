@@ -5,7 +5,7 @@ import createHistory from "history/createBrowserHistory";
 import Bootloader from "./containers/Bootloader";
 import registerServiceWorker from "./registerServiceWorker";
 
-import "./styles/index.css";
+import "./styles/index.scss";
 
 const history = createHistory();
 

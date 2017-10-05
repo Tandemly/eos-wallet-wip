@@ -71,7 +71,7 @@ const App = () => (
         </section>
       </div>
       <div className="column">
-        <div className="menu-closer" role="button" tabindex="0" />
+        <div className="menu-closer" role="button" tabIndex="0" />
         <div className="columns is-gapless">
           <div className="column is-7">
             <section className="section">
@@ -79,20 +79,20 @@ const App = () => (
               <p>Move funds to another EOS account.</p>
               <form>
                 <div className="field">
-                  <label className="label" for="to">To</label>
+                  <label className="label" htmlFor="to">To</label>
                   <div className="control">
                     <input type="text" name="to" className="input" />
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label" for="amount">Amount</label>
+                  <label className="label" htmlFor="amount">Amount</label>
                   <div className="control">
                     <input type="text" name="amount" className="input" />
                   </div>
                   <p className="help"><a>Use Full Balance</a></p>
                 </div>
                 <div className="field">
-                  <label className="label" for="memo">Memo</label>
+                  <label className="label" htmlFor="memo">Memo</label>
                   <div className="control">
                     <input type="text" name="memo" className="input" />
                   </div>

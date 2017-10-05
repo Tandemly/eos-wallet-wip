@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tandem.ly/react-scripts": "1.0.14",
+    "@tandem.ly/react-scripts": "^1.0.15",
     "bulma": "^0.5.3",
     "classnames": "^2.2.5",
     "color": "^2.0.0",
@@ -27,15 +27,15 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
-    "start-js": "react-scripts start",
-    "build": "npm run build-css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar --include-path ./src/styles --include-path ./node_modules src/styles/ -o src/styles/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/styles --include-path ./node_modules src/styles/ -o src/styles/ --watch --recursive",
     "flow": "flow",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
+  },
+  "devDependencies": {
+    "resolve-url-loader": "^2.1.0"
   }
 }
