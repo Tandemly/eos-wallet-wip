@@ -2,7 +2,6 @@
 @import "../../node_modules/bulma/sass/utilities/functions.sass";
 
 $primary: #9bca3b;
-
 $secondary: #1e91d6;
 $secondary-inverse: findColorInvert($secondary);
 $accent: #ae3379;
@@ -38,3 +37,18 @@ $title-color: $secondary;
 // $subtitle-strong-weight:	$weight-semibold;
 
 @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+
+// Header
+.logo {
+  height: 55px;
+}
+
+// Cards
+$card-background-color: transparent;
+$card-shadow: none;
+
+// Narrow Column
+.is-narrow {
+  width: 250px;
+  background-color: #dddddd;
+}
