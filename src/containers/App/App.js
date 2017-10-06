@@ -6,69 +6,67 @@ import "./App.scss";
 const App = () => (
   <main>
     <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
-    <section className="hero is-primary">
+    <section className="hero is-primary p-md">
       <div className="level is-mobile">
         <div className="level-left">
-          <div className="control is-hidden-tablet">
+          <div className="control level-item is-hidden-tablet">
             <button className="button is-secondary"><span className="icon-menu"></span></button>
           </div>
-          <a href="/">
-            <img alt="" className="logo" src="/images/logo.svg" />
-          </a>
+          <div className="level-item">
+            <a href="/">
+              <img alt="" className="logo image" src="/images/logo.svg" />
+            </a>
+          </div>
         </div>
-        <div className="card level-right">
-          <div className="card-content">
-            <div className="media">
-              <div className="media-content has-text-right is-hidden-mobile">
-                <p className="title is-4">Hi, Display Name</p>
-                <p className="subtitle is-6">Customize your profile | <span className="icon-settings"></span> | <span className="icon-logout"></span></p>
-              </div>
-              <div className="media-right">
-                <figure className="image is-48x48">
-                  <img src="https://avatarfiles.alphacoders.com/696/69632.jpg" alt="Placeholder image" />
-                </figure>
-              </div>
+        <div className="level-right">
+          <div className="level-item has-text-right is-hidden-mobile">
+            <div>
+              <p className="title is-4 is-spaced">Hi, Display Name</p>
+              <p className="subtitle is-6">Customize your profile | <span className="icon-settings"></span> | <span className="icon-logout"></span></p>
             </div>
+          </div>
+          <div className="level-item">
+            <figure className="image is-48x48">
+              <img src="https://avatarfiles.alphacoders.com/696/69632.jpg" alt="Placeholder image" />
+            </figure>
           </div>
         </div>
       </div>
     </section>
     <section className="columns is-gapless is-fluid">
       <div className="column is-narrow is-hidden-mobile">
-        <section className="section">
-          <aside className="menu">
-            <div className="-is-logged-in">
-              <h1 className="title is-1 balance">1.00m</h1>
-              <h6 className="subtitle is-6 full_balance">1,000,000.0080</h6>
-              <span className="tag is-primary is-medium change">+27,600</span>
-              <ul className="menu-list">
-                <li>
-                  <a href="/"><span className="icon-transfer"></span> Transfer</a>
-                </li>
-                <li>
-                  <a href="/transactions"><span className="icon-history"></span> Transaction History</a>
-                </li>
-                <li>
-                  <a href="/permissions"><span className="icon-permissions"></span> Permission</a>
-                </li>
-                <li>
-                  <a href="/"><span className="icon-logout"></span> Logout</a>
-                </li>
-              </ul>
-            </div>
+        <aside className="menu p-lg">
+          <div className="-is-logged-in">
+            <h1 className="title is-1 balance">1.00m</h1>
+            <h6 className="subtitle is-6 full_balance">1,000,000.0080</h6>
+            <span className="tag is-primary is-medium change">+27,600</span>
             <ul className="menu-list">
               <li>
-                <a href="/users">Users</a>
+                <a href="/"><span className="icon-transfer"></span> Transfer</a>
               </li>
               <li>
-                <a href="/about">About</a>
+                <a href="/transactions"><span className="icon-history"></span> Transaction History</a>
               </li>
               <li>
-                <a href="/faq">FAQ</a>
+                <a href="/permissions"><span className="icon-permissions"></span> Permission</a>
+              </li>
+              <li>
+                <a href="/"><span className="icon-logout"></span> Logout</a>
               </li>
             </ul>
-          </aside>
-        </section>
+          </div>
+          <ul className="menu-list">
+            <li>
+              <a href="/users">Users</a>
+            </li>
+            <li>
+              <a href="/about">About</a>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
+            </li>
+          </ul>
+        </aside>
       </div>
       <div className="column">
         <div className="menu-closer" role="button" tabIndex="0" />

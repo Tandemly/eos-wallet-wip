@@ -1,5 +1,6 @@
 @import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
 @import "../../node_modules/bulma/sass/utilities/functions.sass";
+@import "../../node_modules/bulma/sass/utilities/mixins.sass";
 
 $primary: #9bca3b;
 $secondary: #1e91d6;
@@ -41,11 +42,10 @@ $title-color: $secondary;
 // Header
 .logo {
   height: 55px;
+  @include mobile {
+    height: 35px;
+  }
 }
-
-// Cards
-$card-background-color: transparent;
-$card-shadow: none;
 
 // Narrow Column
 .is-narrow {
@@ -55,13 +55,6 @@ $card-shadow: none;
 
 .level.is-mobile .level-item:not(:last-child) {
   margin-right: 0.75rem;
-}
-
-.hero .level-left {
-  padding-left: 1.5rem;
-  button {
-    margin-right: 1rem;
-  }
 }
 
 // Transaction History
