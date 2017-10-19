@@ -7,7 +7,7 @@ const Header = ({
   children,
   onMenuClick,
 }) => (
-  <section className={cx("hero", css.header)}>
+  <header className={cx("hero", css.header)}>
     <div className="level is-mobile">
       <div className="level-left">
         <div className="control level-item is-hidden-tablet">
@@ -42,7 +42,7 @@ const Header = ({
         </figure>
       </div>
     </div>
-  </section>
+  </header>
 );
 
 export default Header;

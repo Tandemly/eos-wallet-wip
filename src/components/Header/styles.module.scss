@@ -4,8 +4,10 @@
 	background-color: $grey-dark;
 	position: relative;
 	padding: 1em;
+	height: 90px;
 	@include mobile {
 		padding: 0;
+		height: 50px;
 	}
 	.menu_toggle {
 		width: 50px;

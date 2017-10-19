@@ -3,6 +3,44 @@ body, button, input, select, textarea {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+html,
+body, 
+#root,
+#root > div,
+main,
+main > .columns,
+main > .columns > .column {
+  height: 100%;
+}
+
+aside,
+section {
+  height: calc(100% - 90px);
+  float: right;
+}
+
+aside {
+  width: 225px;
+  float: left;
+  background-color: $grey-60;
+  @include desktop {
+    width: 250px;
+  }
+  @include mobile {
+    display: none;
+  }
+}
+
+section {
+  width: calc(100% - 225px);
+  @include desktop {
+    width: calc(100% - 250px);
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+
 body,
 .title.is-1,
 .title.is-2,
@@ -16,8 +54,8 @@ body,
 .content h4,
 .content h5,
 .content h6,
-p
-{
+.label,
+p {
   color: white;
   font-weight: 400;
   p {

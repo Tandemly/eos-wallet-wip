@@ -114,27 +114,25 @@ class App extends React.Component {
     
         <Header />
         
-        <section className="columns is-variable is-0">
-          <div className="column is-narrow is-hidden-mobile">
-            <Menu />
-          </div>
-    
-          <div className="column">
-            <div  
-              onClick={closeMenu}
-              className="menu-closer"
-              role="button"
-              tabIndex="0" />
+        <aside>
+          <Menu />
+        </aside>
+  
+        <section>
+          <div  
+            onClick={closeMenu}
+            className="menu-closer"
+            role="button"
+            tabIndex="0" />
 
-            <Switch location={isModalOpen ? this.previousLocation : location}>
-              <Route path="/about" component={About} />
-              <Route path="/faq" component={Faq} />
-              <RoutesAuthenticated isAuthenticated={isAuthenticated} />
-              <Route path="*" component={NoMatch} />
-            </Switch>
-    
-            <Footer />
-          </div>
+          <Switch location={isModalOpen ? this.previousLocation : location}>
+            <Route path="/about" component={About} />
+            <Route path="/faq" component={Faq} />
+            <RoutesAuthenticated isAuthenticated={isAuthenticated} />
+            <Route path="*" component={NoMatch} />
+          </Switch>
+  
+          <Footer />
         </section>
 
         <Modal
