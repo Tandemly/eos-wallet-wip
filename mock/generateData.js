@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var json = JSON.stringify(jsf(mockDataSchema));
 
-fs.writeFile("./mock/_db.json", json, function (err) {
+fs.writeFile("./mock/db.json", json, function (err) {
   if (err) {
     return console.log(err);
   } else {

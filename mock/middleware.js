@@ -4,7 +4,7 @@ const secureRandom = require('secure-random');
 module.exports = (req, res, next) => {
   const { body } = req;
 
-  console.log(body);
+  console.log(body, res);
 
   const claims = {
     iss: "http://localhost:4400/",
