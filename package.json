@@ -38,7 +38,8 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "mock": "json-server --watch db.json --routes routes.json --port 4400"
   },
   "devDependencies": {
     "enzyme": "^3.1.0",
