@@ -6,7 +6,7 @@ import {
 import rejectBadResponse from 'util/rejectBadResponse';
 
 const getUser = (payload, dispatch, history) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/login/`, {
+  fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/login/`, {
     method: 'POST',
     mode: 'cors',
     headers: {

@@ -37,7 +37,7 @@ const createAccountFlow = {
 };
 
 export const postSignup = (payload, dispatch, history, flow) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/signup/`, {
+  fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/signup/`, {
     method: 'POST',
     mode: 'cors',
     headers: {

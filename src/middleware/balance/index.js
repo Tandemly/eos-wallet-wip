@@ -7,7 +7,7 @@ import {
 import rejectBadResponse from 'util/rejectBadResponse';
 
 export const getBalance = (payload, token, dispatch) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/account/`, {
+  fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/account/`, {
     method: 'POST',
     mode: 'cors',
     headers: {

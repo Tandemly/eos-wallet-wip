@@ -11,7 +11,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const getTransactions = (payload, token, dispatch) => (
   delay(1000)
     .then(() =>
-      fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/account/transactions/`, {
+      fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/account/transactions/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
