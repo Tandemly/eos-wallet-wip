@@ -1,0 +1,10 @@
+{
+  "/api/v1/*": "/$1",
+  "/auth/login": "/user",
+  "/auth/password/reset": "/user",
+  "/account/:id": "/account/:id",
+  "/transactions": "/transactions",
+  "/transfer": "/transfer",
+  "/user/:id": "/user/:id",
+  "/users": "/users"
+}
