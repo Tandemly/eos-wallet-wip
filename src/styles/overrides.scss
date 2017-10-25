@@ -3,55 +3,54 @@ body, button, input, select, textarea {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-html,
-body,
-#root,
-#root > div,
 main {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  flex-direction: column;
 }
 
 .wrapper {
   display: flex;
-  flex: 1;
-  position: relative;
+  flex: 1 0 auto;
 }
 
 aside {
-  width: 225px;
-  display: flex;
-  flex-direction: column;
+  width: 250px;
+  position: relative;
+  flex-shrink: 0;
   background-color: $grey-60;
+  @include tablet {
+    width: 225px;
+  }
   @include desktop {
     width: 250px;
-  }
-  @include mobile {
-    position: absolute;
-    left: 0;
   }
 }
 
 section {
-  width: calc(100% - 225px);
-  display: flex;
-  flex-direction: column;
+  width: calc(100% - 250px);
+  flex: 1 0 auto;
+  position: relative;
   background-color: $grey-main;
   transition: left .4s;
+  @include mobile {
+    width: 100%;
+    left: -250px;
+  }
+  @include tablet {
+    width: calc(100% - 225px);
+  }
   @include desktop {
     width: calc(100% - 250px);
   }
-  @include mobile {
-    width: 100%;
-    position: absolute;
-    left: 0;
-  }
   &.open {
-    left: 225px;
+    left: 0;
     .menu-closer {
       opacity: .8;
       visibility: visible;
+      z-index: 1;
     }
   }
   .menu-closer {
