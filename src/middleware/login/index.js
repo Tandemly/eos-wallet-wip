@@ -18,7 +18,7 @@ export const getUser = (payload, dispatch, history) => (
     .then(rejectBadResponse)
     .then(response => response.json())
     .then(user => {
-      ['id_token', 'access_token'].forEach(key => {
+      ['accessToken', 'refreshToken'].forEach(key => {
         localStorage.setItem(key, user[key]);
       });
 
@@ -37,9 +37,9 @@ export const getUser = (payload, dispatch, history) => (
 
 const login = store => next => (action) => {
   if (action.type === 'TRY_POST_LOGIN') {
-    const { account_name, owner_key, history } = action;
+    const { email, password, history } = action;
 
-    getUser({ account_name, owner_key }, store.dispatch, history);
+    getUser({ email, password }, store.dispatch, history);
   }
 
   next(action);

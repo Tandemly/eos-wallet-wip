@@ -10,30 +10,30 @@ const LoginForm = ({
   handleClose,
   modal,
   submitting,
-  accountName,
+  email,
   className }) => (
   <form onSubmit={handleSubmit(callAPI)} className={className}>
     
     <Field
-      aria-describedby="account_name"
+      aria-describedby="email"
       className="input"
       component={renderField}
-      id="account_name"
-      label="Account Name"
-      name="account_name"
+      id="email"
+      label="Email"
+      name="email"
       required
       prefixed
-      type="text"
-      value={accountName}
+      type="email"
+      value={email}
     />
 
     <Field
-      aria-describedby="owner_key"
+      aria-describedby="password"
       className="input"
       component={renderField}
-      id="owner_key"
-      label="Owner Key"
-      name="owner_key"
+      id="password"
+      label="Password"
+      name="password"
       required
       type="password"
     />

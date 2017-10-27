@@ -10,9 +10,9 @@ const SUCCEED_LOGOUT = 'SUCCEED_LOGOUT';
 /* TODO review shape */
 const initialState = {
   user: {
-    account_name: "",
-    id_token: "",
-    access_token: "",
+    email: '',
+    accessToken: '',
+    refreshToken: '',
   },
   isFetching: false,
   // const token = localStorage.getItem('id_token')
@@ -69,11 +69,11 @@ export function succeedPostLogin({ user }) {
 }
 
 // TODO "keep me logged in" should request longer expiry date
-export function tryPostLogin({ account_name, owner_key, history }) {
+export function tryPostLogin({ email, password, history }) {
   return {
     type: TRY_POST_LOGIN,
-    account_name,
+    email,
     history,
-    owner_key,
+    password,
   };
 }
