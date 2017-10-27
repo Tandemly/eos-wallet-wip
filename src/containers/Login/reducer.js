@@ -15,9 +15,9 @@ const initialState = {
     refreshToken: '',
   },
   isFetching: false,
-  // const token = localStorage.getItem('id_token')
+  // const token = localStorage.getItem('accessToken')
   // isAuthenticatedUntil: token && token.exp > (Date.now() / 1000),
-  isAuthenticated: localStorage.getItem('id_token') ? true : false,
+  isAuthenticated: localStorage.getItem('accessToken') ? true : false,
 };
 
 export function reducer(state = initialState, action = {}) {
