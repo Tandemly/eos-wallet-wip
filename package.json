@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tandem.ly/react-scripts": "^1.0.15",
+    "@tandem.ly/react-scripts": "^1.0.19",
     "bulma": "^0.5.3",
     "classnames": "^2.2.5",
     "color": "^2.0.0",
