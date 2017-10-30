@@ -10,7 +10,7 @@
 $colors: map-merge($colors, $additional-colors);
 
 // Base style framework
-@import "../../node_modules/bulma/bulma.sass";
+@import "../../../node_modules/bulma/bulma.sass";
 
 // Custom styles for design
 @import "./overrides.scss";

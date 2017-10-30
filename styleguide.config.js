@@ -10,60 +10,60 @@ module.exports = {
     "**/test.js",
     "**/*.spec.js",
     "**/__snapshots__/*",
-    "src/components/**/index.js",
-    "src/components/styleguide/*",
-    "src/containers/**/*",
+    "src/app/components/**/index.js",
+    "src/app/components/styleguide/*",
+    "src/app/containers/**/*",
   ],
   require: [
     // The Application's specific styles
-    path.join(__dirname, "src/styles/index.scss"),
+    path.join(__dirname, "src/app/styles/index.scss"),
     // Styles solely for react-styleguide
-    path.join(__dirname, "src/styleguide/styles/styles.css")
+    path.join(__dirname, "src/app/styleguide/styles/styles.css")
   ],
   styleguideComponents: {
-    Logo: path.join(__dirname, "src/styleguide/components/Logo.js"),
-    DisplayRedux: path.join(__dirname, 'src/util/component-utils/DisplayRedux.js'),
-    DisplayReactRouter: path.join(__dirname, 'src/util/component-utils/DisplayReactRouter.js'),
-    ErrorBoundary: path.join(__dirname, 'src/containers/ErrorBoundary.js'),
+    Logo: path.join(__dirname, "src/app/styleguide/components/Logo.js"),
+    DisplayRedux: path.join(__dirname, 'src/app/util/component-utils/DisplayRedux.js'),
+    DisplayReactRouter: path.join(__dirname, 'src/app/util/component-utils/DisplayReactRouter.js'),
+    ErrorBoundary: path.join(__dirname, 'src/app/containers/ErrorBoundary.js'),
   },
   context: {
-    account: path.resolve(__dirname, 'src/fixtures/account.js'),
-    transactions: path.resolve(__dirname, 'src/fixtures/transactions.js'),
-    users: path.resolve(__dirname, 'src/fixtures/users.js'),
+    account: path.resolve(__dirname, 'src/app/fixtures/account.js'),
+    transactions: path.resolve(__dirname, 'src/app/fixtures/transactions.js'),
+    users: path.resolve(__dirname, 'src/app/fixtures/users.js'),
   },
-  template: path.join(__dirname, "src/styleguide/template.html"),
+  template: path.join(__dirname, "src/app/styleguide/template.html"),
   assetsDir: "",
   showCode: true,
   showUsage: true,
   sections: [
     {
       name: "Introduction",
-      content: "src/styleguide/intro.md",
+      content: "src/app/styleguide/intro.md",
       isolated: true
     },
     {
       name: "Typography",
-      content: "src/styleguide/typography.md",
+      content: "src/app/styleguide/typography.md",
       isolatedSection: true
     },
     {
       name: "Colors",
-      content: "src/styleguide/colors.md",
+      content: "src/app/styleguide/colors.md",
       isolatedSection: true
     },
     {
       name: "Components",
-      components: "src/components/**/[A-Z]*.js",
+      components: "src/app/components/**/[A-Z]*.js",
       isolatedSection: true
     },
     {
       name: "Containers",
-      components: "src/containers/**/[A-Z]*.js",
+      components: "src/app/containers/**/[A-Z]*.js",
       isolatedSection: true
     },
     {
       name: "Utility",
-      components: "src/util/**/[A-Z]*.js",
+      components: "src/app/util/**/[A-Z]*.js",
       isolatedSection: true
     }
   ],
