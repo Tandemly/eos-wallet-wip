@@ -2,10 +2,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import createHistory from "history/createBrowserHistory";
-import Bootloader from "./containers/Bootloader";
-import registerServiceWorker from "./registerServiceWorker";
+import Bootloader from "containers/Bootloader";
+import registerServiceWorker from "./app/registerServiceWorker";
 
-import "./styles/index.scss";
+import "styles/index.scss";
 
 const styles = [...document.querySelectorAll('head style')];
 const link = document.querySelector('link[type="text/css"]');

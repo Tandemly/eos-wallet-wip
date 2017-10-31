@@ -1,6 +1,6 @@
-@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
-@import "../../node_modules/bulma/sass/utilities/functions.sass";
-@import "../../node_modules/bulma/sass/utilities/mixins.sass";
+@import "../../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "../../../node_modules/bulma/sass/utilities/functions.sass";
+@import "../../../node_modules/bulma/sass/utilities/mixins.sass";
 
 $primary: #4b9af5;
 $secondary: #6a7e95;
@@ -36,4 +36,4 @@ $additional-colors: (
   "grey-40": ($grey-40, $grey-40-inverse),
 );
 
-@import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+@import "../../../node_modules/bulma/sass/utilities/derived-variables.sass";
