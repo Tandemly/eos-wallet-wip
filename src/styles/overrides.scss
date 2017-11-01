@@ -301,6 +301,18 @@ a {
       }
     }
   }
+  .column {
+    &:not(:last-child) {
+      @include touch {
+        padding-bottom: 4rem;
+      }
+    }
+  }
+  .section {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 // Logged in

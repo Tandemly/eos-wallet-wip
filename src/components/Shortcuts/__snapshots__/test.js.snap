@@ -6,7 +6,7 @@ exports[`<Shortcuts /> renders without crashing 1`] = `
 >
   <li>
     <ul
-      className="menulist"
+      className="menulist -is-logged-in"
     >
       <li>
         <a

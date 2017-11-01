@@ -48,16 +48,16 @@ const RoutesAuthenticated = ({ isAuthenticated, location }) =>
   <Route path="/logout" component={Logout} key="logout" />,
 ]);
 
-const renderModalRoutes = () => (
+const renderModalRoutes = (props) => (
   <Switch>
     <Redirect from="/create-account" to="/signup" />
-    <Route path="/login" component={Login} />
+    <Route path="/login" render={() => <Login {...props} />} />
     <Signup>
       <Switch>
-        <Route exact path="/signup" component={AccountName} />
-        <Route exact path="/signup/email" component={Email} />
-        <Route exact path="/signup/phone" component={Phone} />
-        <Route path="/signup/complete" component={SignupFinal} />
+        <Route exact path="/signup" component={() => <AccountName {...props} />} />
+        <Route exact path="/signup/email" component={() => <Email {...props} />} />
+        <Route exact path="/signup/phone" component={() => <Phone {...props} />} />
+        <Route path="/signup/complete" component={() => <SignupFinal {...props} />} />
       </Switch>
     </Signup>
   </Switch>
@@ -100,6 +100,7 @@ class App extends React.Component {
   handleModalClose() {
     const { history } = this.props;
     history.push(this.previousLocation);
+    console.log('closing')
   }
 
   render() {

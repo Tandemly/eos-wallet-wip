@@ -41,8 +41,8 @@
     "test:once": "cross-env CI=true NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide": "cross-env NODE_PATH=src styleguidist server",
+    "styleguide:build": "cross-env NODE_PATH=src styleguidist build"
   },
   "devDependencies": {
     "cross-env": "^5.1.0",

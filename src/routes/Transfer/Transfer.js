@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import Container from "containers/Transfer";
 import Transactions from "containers/Transactions";
 import transactions from "fixtures/transactions";
 
@@ -9,37 +10,15 @@ const Transfer = () => (
       <article className="u-mb6">
         <h2 className="title is-2">Transfer</h2>
         <p>Move funds to another EOS account.</p>
-        <form>
-          <div className="field">
-            <label className="label" htmlFor="to">To</label>
-            <div className="control">
-              <input type="text" name="to" className="input" />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label" htmlFor="amount"><p>Amount<a className="help">Use Full Balance</a></p></label>
-            <div className="control">
-              <input type="text" name="amount" className="input" />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label" htmlFor="memo">Memo</label>
-            <div className="control">
-              <input type="text" name="memo" className="input" />
-            </div>
-          </div>
-          <div className="field is-grouped u-mt4">
-            <div className="control">
-              <button className="button is-large is-fullwidth is-primary">Submit</button>
-            </div>
-            <div className="control">
-              <button className="button is-large is-fullwidth is-secondary">Clear</button>
-            </div>
-          </div>
-        </form>
+        
+        <Container />
       </article>
       <article>
-        <h3 className="title is-3"><p>Transaction History<a className="help">See All</a></p></h3>
+        <h3 className="title is-3">
+          <p>Transaction History
+            <Link className="help" to="/transactions">See All</Link>
+          </p>
+        </h3>
 
         <Transactions
           count={5}

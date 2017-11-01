@@ -14,7 +14,6 @@ const PreferencesForm = ({
       id="pictureURL"
       label="Picture URL"
       name="pictureURL"
-      required
       component={renderField}
       type="text"
     />
@@ -24,7 +23,6 @@ const PreferencesForm = ({
       id="displayName"
       label="Display Name"
       name="displayName"
-      required
       component={renderField}
       type="text"
     />
@@ -34,7 +32,7 @@ const PreferencesForm = ({
       id="about"
       label="About (150 Character Max)"
       name="about"
-      required
+      maxLength={150}
       component={renderField}
       type="text"
     />
@@ -44,7 +42,6 @@ const PreferencesForm = ({
       id="location"
       label="Location"
       name="location"
-      required
       component={renderField}
       type="text"
     />
@@ -54,7 +51,6 @@ const PreferencesForm = ({
       id="website"
       label="Website"
       name="website"
-      required
       component={renderField}
       type="text"
     />

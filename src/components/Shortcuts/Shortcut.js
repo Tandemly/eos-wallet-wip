@@ -9,7 +9,7 @@ const Shortcut = (item, _key) => {
   if (Array.isArray(item)) {
     return (
       <li key={_key}>
-        <Shortcuts data={item} />
+        <Shortcuts className="-is-logged-in" data={item} />
       </li>
     );
   } else {
