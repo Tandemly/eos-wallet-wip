@@ -1,17 +1,14 @@
 import { succeedLogout } from 'containers/Logout/reducer';
 
 const logoutUser = (store, history) => {
-  ['id_token', 'access_token'].forEach(key => {
-    localStorage.removeItem(key);
-  });
-
-  // TODO preserve some values
   localStorage.clear();
 
   // TODO find out if this is correct path to redirect logout
   history.push('/login');
 
   store.dispatch(succeedLogout());
+
+  // TODO network call to dispatch success logout
 }
 
 const logout = store => next => (action) => {

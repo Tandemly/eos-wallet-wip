@@ -6,7 +6,7 @@ import {
 import rejectBadResponse from 'util/rejectBadResponse';
 
 export const postTransfer = (payload, token, dispatch) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/account/transfer`, {
+  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/v1/transfer`, {
     method: 'POST',
     mode: 'cors',
     headers: {

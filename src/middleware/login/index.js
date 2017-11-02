@@ -6,7 +6,7 @@ import {
 import rejectBadResponse from 'util/rejectBadResponse';
 
 export const getUser = (payload, dispatch, history) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/login/`, {
+  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/v1/auth/login/`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -18,7 +18,7 @@ export const getUser = (payload, dispatch, history) => (
     .then(rejectBadResponse)
     .then(response => response.json())
     .then(user => {
-      ['id_token', 'access_token'].forEach(key => {
+      ['accessToken', 'refreshToken'].forEach(key => {
         localStorage.setItem(key, user[key]);
       });
 
@@ -37,9 +37,9 @@ export const getUser = (payload, dispatch, history) => (
 
 const login = store => next => (action) => {
   if (action.type === 'TRY_POST_LOGIN') {
-    const { account_name, owner_key, history } = action;
+    const { email, password, history } = action;
 
-    getUser({ account_name, owner_key }, store.dispatch, history);
+    getUser({ email, password }, store.dispatch, history);
   }
 
   next(action);
