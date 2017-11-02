@@ -52,7 +52,7 @@ const renderModalRoutes = (props) => (
   <Switch>
     <Redirect from="/create-account" to="/signup" />
     <Route path="/login" render={() => <Login {...props} />} />
-    <Signup>
+    <Signup {...props}>
       <Switch>
         <Route exact path="/signup" component={() => <AccountName {...props} />} />
         <Route exact path="/signup/email" component={() => <Email {...props} />} />

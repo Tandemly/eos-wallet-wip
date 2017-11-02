@@ -3,7 +3,8 @@ import { succeedLogout } from 'containers/Logout/reducer';
 const logoutUser = (store, history) => {
   localStorage.clear();
 
-  history.push('/signup');
+  // TODO find out if this is correct path to redirect logout
+  history.push('/login');
 
   store.dispatch(succeedLogout());
 
