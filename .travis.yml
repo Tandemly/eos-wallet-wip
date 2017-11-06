@@ -1,13 +1,14 @@
 language: node_js
 node_js:
-  - "8.9.0"
-
+- 8.9.0
 cache:
   directories:
   - node_modules
-
 script:
-  - npm test
-  - unset CI
-  - npm run build
-  - set CI
+- npm test
+- unset CI
+- npm run build
+- set CI
+notifications:
+  slack:
+    secure: kZwJCFn53DOMTlZOv2PKLZEtUN6eLeXWa6T/H5u0CJ4B66SFSjYO6iGauorN2w3ywkDJ/IweMKwrzLwFaoFdZ4JHZ+4PNomgwx4cq9EGYJ2oK9J2qt+QrQnMSblQMeUOCWtPp9UVit262Ul8xanJOv7chQuVWWTY1q952QpG3gQmnqLVJcQKHwtZZimQRizxO8HpcEfwqGJQ49ueKv2j7tX2u4/onncoVTQgyz0E53svvKVKocw2rNL7jEwPdvJPNhm2T5LAujw2HSYz8Uyd9wG5OSdky/cd5HWTmyoMUuxbxGX6B7su7d5lzUKyBjUqkaHweb7IA/gCxjdh7Bf1TBBpzaVjmypW7x8IZJsBP28awPMZS1J/Z3Mpu9RaRrWcR9yvTrkmUazGtiANfuCf4xyvQUrbyJkeFC22V3Alphc52gI2Wt85cdlQXr2CA+YCzx0OwZkd3cnFiTTJ0207OyinsFaDKVWS79YvAnU2wVSKrA6/aqQLJF/ZnUN/JMKPjZOdmgLnMwPKQWX5+qvKcyx9l15QHIHJbVqFqMbnAXQSNsaSlhdoLrWy9c5KhUIF2IuzyJ0cRVY75D5/uZnhwIT763el6yXFG0c7phfW0RuvcUMBUcOns7eSopVyFEuiiV1J2EcGqmCVsH4Z4K3pCDM7wmDfHO8SXivvwBayDVw=
