@@ -1,0 +1,13 @@
+{
+  "emamil": "david.atchley@tandem.ly",
+  "auth": {
+    "encrypted_owner_key":
+      "$2a$16$jU9jvsD5Xhuc1MkgyRVqvOd7JT3Ev0a1zgq/GHKKtSe5AIAumqQ5e"
+  },
+  "image_url": "https://avatarfiles.alphacoders.com/696/69632.jpg",
+  "display_name": "Bruce Wayne",
+  "website": "",
+  "location": "St. Louis, MO",
+  "about": "A man with a plan, a canal, Panama!",
+  "phone": "555-123-4567"
+}
