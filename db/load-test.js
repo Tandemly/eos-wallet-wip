@@ -1,6 +1,14 @@
+const fs = require("fs");
+const path = require("path");
 const mongoose = require("mongoose");
-const Profile = require("./profiles");
+const { connect } = require("../server/db");
+const { env } = require("../server/vars");
+const Profile = require("../server/models/profiles.model");
+const bcrypt = require("bcryptjs");
+
 global.Promise = require("bluebird");
+
+const log = msg => console.log(`[test db] ${msg}`);
 
 const loadJSON = rel =>
   JSON.parse(
@@ -13,7 +21,13 @@ const loadProfiles = async () => {
   try {
     const profiles = loadJSON("./initial.json");
     await Profile.remove({});
-    const loaded = await Profile.insertMany(profiles);
+    const hashed = profiles.map(profile => {
+      const rounds = env === "test" ? 1 : 10;
+      const hash = bcrypt.hashSync(profile.password, rounds);
+      profile.password = hash;
+      return profile;
+    });
+    const loaded = await Profile.insertMany(hashed);
     log(`-> Loaded ${loaded.length} wallet profiles`);
     return loaded;
   } catch (err) {
@@ -23,7 +37,7 @@ const loadProfiles = async () => {
 
 try {
   // open mongoose connection
-  mongoose.connect();
+  connect();
 
   console.log("[test db] Loading ...");
   loadProfiles().then(profiles => {

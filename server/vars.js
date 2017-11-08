@@ -7,8 +7,8 @@ require("dotenv-safe").load({
 });
 
 module.exports = {
-  env: process.env.NODE_ENV,
-  port: process.env.PORT,
+  env: process.env.NODE_ENV || "development",
+  port: process.env.PORT || 9000,
   mongo: {
     uri:
       process.env.NODE_ENV === "test"

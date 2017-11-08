@@ -1,10 +1,14 @@
 // server/index.js
-'use strict';
+"use strict";
+const app = require("./app");
+const { env, port } = require("./vars");
+const mongoose = require("./db");
 
-const app = require('./app');
+// open mongoose connection
+mongoose.connect();
 
-const PORT = process.env.PORT || 9000;
+const PORT = port || process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
+  console.log(`[${env}] App listening on port ${PORT}!`);
 });
