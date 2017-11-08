@@ -1,103 +1,46 @@
 import configureMockStore from 'redux-mock-store';
 import { _middlewares } from '../';
-import {
-  succeedPostUsername,
-  failPostUsername, } from 'containers/AccountName/reducer';
-import {
-  succeedPostEmail,
-  failPostEmail, } from 'containers/Email/reducer';
-import {
-  succeedPostPhone,
-  failPostPhone, } from 'containers/Phone/reducer';
-import { failPostSignup } from 'containers/SignupFinal/actions';
+import { failPostSignup } from 'containers/Signup/actions';
 import { succeedPostLogin } from 'containers/Login/reducer';
 import createAccount from './';
 
 const mockStore = configureMockStore(_middlewares);
 
-describe('async balance middleware', () => {
+describe('async signup middleware', () => {
   const store = mockStore({ login: [] });
   const next = jest.fn();
   const history = {
     push: jest.fn(),
   };
-  const account_name = { account_name: 'inita' };
-  const phone = { phone: '3147777909' };
-  const email = { email: 'test@eafe.com' };
+  const payload = {
+    email: 'test@eafe.com',
+    password: 'xyz20171424'
+  };
 
-  it('on account_name POST success, dispatch succeedPostUsername', async () => {
+  it('on whole signup POST success, dispatch succeedPostLogin', async () => {
     const triggerAction = {
-      ...account_name,
-      history,
-      type: 'TRY_POST_USERNAME',
-    };
-    const expectedActions = [
-      succeedPostUsername(account_name),
-    ];
-    
-    fetch.mockResponse('', { status: 200 });
-    await createAccount(store)(next)(triggerAction)
-
-    expect(store.getActions()).toEqual(expectedActions);
-  });
-
-  it('on email POST success, dispatch succeedPostEmail', async () => {
-    const triggerAction = {
-      ...email,
-      history,
-      type: 'TRY_POST_EMAIL',
-    };
-    const expectedActions = [
-      succeedPostUsername(account_name),
-      succeedPostEmail(email),
-    ];
-    
-    fetch.mockResponse('', { status: 200 });
-    await createAccount(store)(next)(triggerAction)
-
-    expect(store.getActions()).toEqual(expectedActions);
-  });
-
-  it('on phone POST success, dispatch succeedPostPhone', async () => {
-    const triggerAction = {
-      ...phone,
-      history,
-      type: 'TRY_POST_PHONE',
-    };
-    const expectedActions = [
-      succeedPostUsername(account_name),
-      succeedPostEmail(email),
-      succeedPostPhone(phone),
-    ];
-    
-    fetch.mockResponse('', { status: 200 });
-    await createAccount(store)(next)(triggerAction)
-
-    expect(store.getActions()).toEqual(expectedActions);
-  });
-
-  it('on whole data POST success, dispatch succeedPostLogin', async () => {
-    const triggerAction = {
-      ...phone,
-      ...account_name,
-      ...email,
+      ...payload,
       history,
       type: 'TRY_POST_SIGNUP',
     };
     const response = {
       user: {
-        account_name: 'inita',
-        auth: {},
-        display_name: '',
-        image_url: '',
-        website: '',
+        timezone: '',
+        id: '',
+        name: '',
+        email: '',
+        role: 'user',
+        createdAt: '',        
       },
+      token: {
+        tokenType: '',
+        accessToken: '',
+        refreshToken: '',
+        expiresIn: '',        
+      }
     };
     const expectedActions = [
-      succeedPostUsername(account_name),
-      succeedPostEmail(email),
-      succeedPostPhone(phone),
-      // Unset notification removes all previous notifications before dispatching login action
+      // Unset notification fires before succeedPostLogin action
       { type: 'UNSET_NOTIFICATION' },
       succeedPostLogin(response),
     ];

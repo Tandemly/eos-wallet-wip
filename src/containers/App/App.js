@@ -1,19 +1,15 @@
 // @flow
 // global localStorage, window
 import * as React from "react";
-import { connect } from 'react-redux';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { connect } from "react-redux";
+import { Route, Redirect, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import Menu from "components/Menu";
 import Modal from "components/Modal";
 
 import Logout from "containers/Logout";
-import AccountName from "containers/AccountName";
-import Email from "containers/Email";
-import Phone from "containers/Phone";
-import SignupFinal from "containers/SignupFinal";
 
 import Login from "routes/Login";
 import Signup from "routes/Signup";
@@ -27,58 +23,71 @@ import Permissions from "routes/Permissions";
 import Preferences from "routes/Preferences";
 import NoMatch from "routes/NoMatch";
 
-import {
-  toggleMenu,
-  closeMenu,
-  routeLoad
-} from "./reducer";
+import { toggleMenu, closeMenu } from "./reducer";
 
 import "./App.scss";
 
-const RoutesAuthenticated = ({ isAuthenticated, location }) => 
-!isAuthenticated ? 
-  <Redirect to="/login" />
-: ([
-  <Route path="/" exact component={Transfer} key="transfer" />,
-  <Route path="/transactions" component={Transactions} key="transactions" />,
-  <Route path="/users" component={Users} key="users" />,
-  <Route path="/user/:id" component={Profile} key="user" />,
-  <Route path="/permissions" component={Permissions} key="permissions" />,
-  <Route path="/preferences" component={Preferences} key="preferences" />,
-  <Route path="/logout" component={Logout} key="logout" />,
-]);
+const RoutesAuthenticated = ({ isAuthenticated, location }) =>
+  !isAuthenticated ? (
+    <Redirect to="/login" />
+  ) : (
+    [
+      <Route path="/" exact component={Transfer} key="transfer" />,
+      <Route
+        path="/transactions"
+        component={Transactions}
+        key="transactions"
+      />,
+      <Route path="/users" component={Users} key="users" />,
+      <Route path="/user/:id" component={Profile} key="user" />,
+      <Route path="/permissions" component={Permissions} key="permissions" />,
+      <Route path="/preferences" component={Preferences} key="preferences" />,
+      <Route path="/logout" component={Logout} key="logout" />
+    ]
+  );
 
-const renderModalRoutes = () => (
+const renderModalRoutes = props => (
   <Switch>
     <Redirect from="/create-account" to="/signup" />
-    <Route path="/login" component={Login} />
-    <Signup>
-      <Switch>
-        <Route exact path="/signup" component={AccountName} />
-        <Route exact path="/signup/email" component={Email} />
-        <Route exact path="/signup/phone" component={Phone} />
-        <Route path="/signup/complete" component={SignupFinal} />
-      </Switch>
-    </Signup>
+    <Redirect from="/connect-account" to="/permissions" />
+    <Route path="/login" render={() => <Login {...props} />} />
+    <Route path="/signup" component={() => <Signup {...props} />} />
   </Switch>
 );
 
 const modalRoutes = [
-  '/login',
-  '/signup',
-  '/create-account',
-  '/connect-account',
+  "/login",
+  "/signup",
+  "/create-account"
 ];
 
-class App extends React.Component {
+type Props = {
+  history: any,
+  location: any,
+  isMenuOpen: boolean,
+  isAuthenticated: boolean,
+  handleClickMenu: () => mixed,
+  handleClickMenuClose: () => mixed
+};
+
+type LocationType = {
+  pathname: string,
+  hash: string,
+  search: string
+};
+
+class App extends React.Component<Props> {
+  previousLocation: LocationType;
+  unauthLocation: LocationType;
+
   constructor(props, context) {
     super(props, context);
 
     /* eslint-disable */
     this.previousLocation = this.unauthLocation = {
-      pathname: '/about',
-      hash: '',
-      search: '',
+      pathname: "/about",
+      hash: "",
+      search: ""
     };
     /* eslint-enable */
   }
@@ -86,20 +95,23 @@ class App extends React.Component {
   componentWillUpdate(nextProps) {
     const {
       history: { location } = { location: window.location },
-      isAuthenticated,
+      isAuthenticated
     } = this.props;
 
     if (
-      nextProps.history.action !== 'POP' &&
+      nextProps.history.action !== "POP" &&
       (!location.state || !location.state.modal)
     ) {
-      this.previousLocation = isAuthenticated ? this.props.location : this.unauthLocation;
+      this.previousLocation = isAuthenticated
+        ? this.props.location
+        : this.unauthLocation;
     }
   }
 
   handleModalClose() {
     const { history } = this.props;
     history.push(this.previousLocation);
+    console.log("closing");
   }
 
   render() {
@@ -108,31 +120,31 @@ class App extends React.Component {
       handleClickMenuClose,
       history: { location } = { location: window.location },
       isAuthenticated,
-      isMenuOpen,
+      isMenuOpen
     } = this.props;
     const handleModalClose = this.handleModalClose.bind(this);
-    const isModalOpen = modalRoutes.some(path => new RegExp(path).test(location.pathname));
+    const isModalOpen = modalRoutes.some(path =>
+      new RegExp(path).test(location.pathname)
+    );
 
     return (
-      <main className={`${isMenuOpen ? 'open' : 'closed'}`}>
+      <main className={`${isMenuOpen ? "open" : "closed"}`}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
-    
-        <Header
-          isAuthenticated={isAuthenticated}
-          onClick={handleClickMenu}
-        />
-        
+
+        <Header isAuthenticated={isAuthenticated} onClick={handleClickMenu} />
+
         <div className="wrapper">
           <aside className="sidebar">
             <Menu isAuthenticated={isAuthenticated} />
           </aside>
-    
-          <section className={`body ${isMenuOpen ? 'open' : 'closed'}`}>
-            <div  
+
+          <section className={`body ${isMenuOpen ? "open" : "closed"}`}>
+            <div
               onClick={handleClickMenuClose}
               className="menu-closer"
               role="button"
-              tabIndex="0" />
+              tabIndex="0"
+            />
 
             <Switch location={isModalOpen ? this.previousLocation : location}>
               <Route path="/about" component={About} />
@@ -140,7 +152,7 @@ class App extends React.Component {
               <RoutesAuthenticated isAuthenticated={isAuthenticated} />
               <Route path="*" component={NoMatch} />
             </Switch>
-    
+
             <Footer />
           </section>
         </div>
@@ -155,26 +167,23 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ 
+const mapStateToProps = ({
   app: { isMenuOpen },
-  login: { isAuthenticated },
+  login: { isAuthenticated }
 }) => ({
-  isAuthenticated: false,
-  isMenuOpen,
+  isAuthenticated,
+  isMenuOpen
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleClickMenu() {
     dispatch(toggleMenu());
   },
   handleClickMenuClose() {
     dispatch(closeMenu());
-  },
+  }
 });
 
-const AppContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default AppContainer;

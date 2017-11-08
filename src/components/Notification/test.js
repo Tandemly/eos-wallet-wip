@@ -6,7 +6,8 @@ describe('<Notification />', () => {
   it('renders without crashing', () => {
     const notification = {
       text: 'Connection error',
-      status: 'error'
+      status: 'error',
+      unsetNotification: () => {},
     };
     const tree = renderer.create(
       <Notification {...notification} />

@@ -6,12 +6,12 @@ import {
 } from 'containers/Balance/reducer';
 import rejectBadResponse from 'util/rejectBadResponse';
 
-export const getBalance = (payload, token, dispatch) => (
+export const getBalance = (payload, accessToken, dispatch) => (
   fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/account/`, {
     method: 'POST',
     mode: 'cors',
     headers: {
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
@@ -36,8 +36,7 @@ const balance = store => next => (action) => {
     login: { 
       isAuthenticated,
       user: {
-        id_token,
-        access_token,
+        accessToken,
       } = {},
     },
   } = store.getState();
@@ -45,7 +44,7 @@ const balance = store => next => (action) => {
   if (isAuthenticated && action.type === 'TRY_GET_BALANCE') {
     const { account_name } = action;
 
-    getBalance({ account_name }, access_token, store.dispatch);
+    getBalance({ account_name }, accessToken, store.dispatch);
   }
 
   next(action);

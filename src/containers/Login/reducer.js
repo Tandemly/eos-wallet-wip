@@ -7,17 +7,16 @@ const TRY_POST_LOGIN = 'TRY_POST_LOGIN';
 
 const SUCCEED_LOGOUT = 'SUCCEED_LOGOUT';
 
-/* TODO review shape */
+// NOTE token goes into local storage, not stored in redux
 const initialState = {
   user: {
-    account_name: "",
-    id_token: "",
-    access_token: "",
+    id: '',
+    email: '',
+    name: '',
+    role: '',
   },
   isFetching: false,
-  // const token = localStorage.getItem('id_token')
-  // isAuthenticatedUntil: token && token.exp > (Date.now() / 1000),
-  isAuthenticated: localStorage.getItem('id_token') ? true : false,
+  isAuthenticated: false,
 };
 
 export function reducer(state = initialState, action = {}) {
@@ -61,7 +60,7 @@ export function failPostLogin({ error }) {
   };
 }
 
-export function succeedPostLogin({ user }) {
+export function succeedPostLogin({ user, token }) {
   return {
     type: SUCCEED_POST_LOGIN,
     user,

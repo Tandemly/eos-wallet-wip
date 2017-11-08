@@ -18,7 +18,7 @@ const Icon = ({
   size?: string
 }) => {
   return (
-    <span className={cx("icon", { size: sizes[size] }, className)}>
+    <span className={cx("icon", { size: size ? sizes[size]: undefined }, className)}>
       <i className={icon} />
     </span>
   );

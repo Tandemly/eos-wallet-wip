@@ -10,6 +10,7 @@ exports[`<Notification /> renders without crashing 1`] = `
   Connection error
   <span
     className="icon-x"
+    onClick={[Function]}
   />
 </div>
 `;

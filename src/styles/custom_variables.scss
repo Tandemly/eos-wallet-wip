@@ -36,26 +36,4 @@ $additional-colors: (
   "grey-40": ($grey-40, $grey-40-inverse),
 );
 
-// navbar related variables
-// $navbar-background-color:	$white
-// $navbar-height:	3.25rem
-$navbar-item-color: $black;
-$navbar-item-hover-color: $white;
-// $navbar-item-hover-background-color:	$background;
-$navbar-item-active-color: $white;
-$navbar-item-active-background-color: rgba($black, 0.2);
-
-// Titles & Subtitles
-// $title-color:	$grey-darker;
-$title-color: $secondary;
-// $title-size:	$size-3;
-// $title-weight:	$weight-semibold;
-// $title-strong-weight:	inherit;
-// $title-strong-color:	inherit;
-// $subtitle-color:	$grey-dark;
-// $subtitle-size:	$size-5;
-// $subtitle-weight:	$weight-normal;
-// $subtitle-strong-color:	$grey-darker;
-// $subtitle-strong-weight:	$weight-semibold;
-
 @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";

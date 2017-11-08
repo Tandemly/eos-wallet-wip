@@ -17,17 +17,21 @@ export const getUser = (payload, dispatch, history) => (
   })
     .then(rejectBadResponse)
     .then(response => response.json())
-    .then(user => {
-      ['id_token', 'access_token'].forEach(key => {
-        localStorage.setItem(key, user[key]);
+    .then(response => {
+      // Clear everything before writing incoming data to localStorage
+      localStorage.clear();
+
+      const { token, user } = response;
+      Object.keys(token).forEach(key => {
+        localStorage.setItem(`token.${key}`, token[key]);
       });
 
-      dispatch(succeedPostLogin(user));
+
+      dispatch(succeedPostLogin({ user }));
     })
     .then(() => history.push('/'))
     // TODO fixup chain of errors
-    .catch(response => response.json())
-    .then(error => error && dispatch(failPostLogin({ error })))
+    .catch(error => error && dispatch(failPostLogin({ error })))
     .catch(() => dispatch({
       type: 'CONNECTION_ERROR',
       form: 'sign-up',

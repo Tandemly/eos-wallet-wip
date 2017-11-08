@@ -1,43 +1,10 @@
-/* eslint-disable camelcase, consistent-return */
 /* global fetch */
-import {
-  succeedPostUsername,
-  failPostUsername, } from 'containers/AccountName/reducer';
-import {
-  succeedPostEmail,
-  failPostEmail, } from 'containers/Email/reducer';
-import {
-  succeedPostPhone,
-  failPostPhone, } from 'containers/Phone/reducer';
-import { failPostSignup } from 'containers/SignupFinal/actions';
+import { failPostSignup } from 'containers/Signup/actions';
 import { succeedPostLogin } from 'containers/Login/reducer';
 import rejectBadResponse from 'util/rejectBadResponse';
 
-const createAccountFlow = {
-  TRY_POST_USERNAME: {
-    success: succeedPostUsername,
-    fail: failPostUsername,
-    to: '/signup/email',
-  },
-  TRY_POST_EMAIL: {
-    success: succeedPostEmail,
-    fail: failPostEmail,
-    to: '/signup/phone',
-  },
-  TRY_POST_PHONE: {
-    success: succeedPostPhone,
-    fail: failPostPhone,
-    to: '/signup/complete',
-  },
-  TRY_POST_SIGNUP: {
-    success: succeedPostLogin,
-    fail: failPostSignup,
-    to: '/permissions',
-  },
-};
-
-export const postSignup = (payload, dispatch, history, flow) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/signup/`, {
+export const postSignup = (payload, dispatch, history) => (
+  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/v1/auth/register/`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -46,13 +13,21 @@ export const postSignup = (payload, dispatch, history, flow) => (
     body: JSON.stringify(payload),
   })
     .then(rejectBadResponse)
-    .then(response => response.text())
-    .then(text => (!text ? dispatch(flow.success(payload)) : JSON.parse(text)))
-    .then(jsonResponse => jsonResponse && dispatch(flow.success(jsonResponse)))
-    .then(() => history.push(flow.to))
+    .then(response => response.json())
+    .then(response => {
+      // Clear everything before writing incoming data to localStorage
+      localStorage.clear();
+
+      const { token, user } = response;
+      Object.keys(token).forEach(key => {
+        localStorage.setItem(`token.${key}`, token[key]);
+      });
+
+      dispatch(succeedPostLogin({ user }));
+    })
+    .then(() => history.push('/permissions'))
     // TODO fixup chain of errors
-    .catch(response => response.json())
-    .then(error => error && dispatch(flow.fail({ error })))
+    .catch(error => error && dispatch(failPostSignup({ error })))
     .catch(() => dispatch({
       type: 'CONNECTION_ERROR',
       form: 'sign-up',
@@ -61,21 +36,13 @@ export const postSignup = (payload, dispatch, history, flow) => (
 );
 
 const createAccount = store => next => async (action) => {
-  const triggerActions = [
-    'TRY_POST_EMAIL',
-    'TRY_POST_PHONE',
-    'TRY_POST_USERNAME',
-    'TRY_POST_SIGNUP',
-  ];
-
-  if (triggerActions.some(t => action.type === t)) {
+  if (action.type === 'TRY_POST_SIGNUP') {
     const { history, type, ...payload } = action;
-    const flow = createAccountFlow[action.type];
 
     if (process.env.NODE_ENV === 'test') {
-      await postSignup(payload, store.dispatch, history, flow);
+      await postSignup(payload, store.dispatch, history);
     } else {
-      postSignup(payload, store.dispatch, history, flow);
+      postSignup(payload, store.dispatch, history);
     }
   }
 

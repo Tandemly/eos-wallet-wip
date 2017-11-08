@@ -1,21 +1,13 @@
 import * as React from "react";
-import _Modal from "react-modal";
-import { withRouter } from "react-router-dom";
+import ReactModal from "react-modal";
 
-const Modal = ({
-  handleClose, 
-  isOpen,
-  renderRoute,
-   ...props 
-}) => (
-  !isOpen ? <_Modal /> :
-  <_Modal
-    isOpen
-    onRequestClose={handleClose}
-    {...props}
-  >
-    {renderRoute({ handleClose })}
-  </_Modal>
-);
+const Modal = ({ handleClose, isOpen, renderRoute, ...props }) =>
+  !isOpen ? (
+    <ReactModal />
+  ) : (
+    <ReactModal isOpen onRequestClose={handleClose} {...props}>
+      {renderRoute({ handleClose })}
+    </ReactModal>
+  );
 
 export default Modal;

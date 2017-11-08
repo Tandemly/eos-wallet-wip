@@ -9,7 +9,7 @@ const logoutUser = (store, history) => {
   localStorage.clear();
 
   // TODO find out if this is correct path to redirect logout
-  history.push('/signup');
+  history.push('/login');
 
   store.dispatch(succeedLogout());
 }

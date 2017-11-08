@@ -3,30 +3,30 @@ import { Link } from "react-router-dom";
 import css from "./styles.module.scss";
 import cx from "classnames";
 
-const renderHeaderUser = ({
-  name,
-  image: { url },
-}) => (
+const renderHeaderUser = ({ name, image: { url } }) => (
   <div className={css.user_info}>
     <div className="has-text-right is-hidden-mobile">
       <div className={css.user_meta}>
         <h4 className={cx("title is-4 is-spaced", css.title)}>Hi, {name}</h4>
         <p className={cx("subtitle is-6", css.subtitle)}>
-          <Link to="/preferences">Customize your profile</Link> | 
-          <Link to="/logout"> <span className="icon-logout"></span></Link>
+          <Link to="/preferences">Customize your profile</Link> |
+          <Link to="/logout">
+            {" "}
+            <span className="icon-logout" />
+          </Link>
         </p>
       </div>
     </div>
 
-    <Link
-      className={css.settings}
-      to="/preferences"
-    >
-      <span className="icon-settings"></span>
+    <Link className={css.settings} to="/preferences">
+      <span className="icon-settings" />
     </Link>
 
     <figure className={cx("image", css.profile_thumbnail)}>
-      <img src="https://avatarfiles.alphacoders.com/696/69632.jpg" alt="Placeholder image" />
+      <img
+        src="https://avatarfiles.alphacoders.com/696/69632.jpg"
+        alt="Placeholder profile thumbnail"
+      />
     </figure>
   </div>
 );
@@ -37,9 +37,9 @@ const Header = ({
   onClick,
   user = {
     name: "Display Name",
-    image: { url: "" },
+    image: { url: "" }
   },
-  ...props,
+  ...props
 }) => (
   <header className={cx("hero", css.header)}>
     <div className="level is-mobile">
@@ -55,7 +55,11 @@ const Header = ({
 
         <div className="level-item">
           <Link to="/">
-            <img alt="" className={cx("image", css.logo)} src="/images/logo.svg" />
+            <img
+              alt=""
+              className={cx("image", css.logo)}
+              src="/images/logo.svg"
+            />
           </Link>
         </div>
       </div>

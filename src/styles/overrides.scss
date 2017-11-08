@@ -232,6 +232,7 @@ a {
   height: 40px;
 }
 
+// Menu
 .aside-login {
   background-color: $grey-light;
   .field {
@@ -250,6 +251,15 @@ a {
         display: none;
       }
     }
+  }
+  &:after {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    content: "";
+    box-shadow: inset 0px 10px 10px -5px rgba($grey-80,0.3);
+    left: 0;
+    bottom: -10px;
   }
   padding: 1.5rem;
   .input-prefix {
@@ -301,33 +311,16 @@ a {
       }
     }
   }
-}
-
-// Logged in
-.-is-logged-in {
-  background-color: $grey-light;
-  &.menulist {
-    position: relative;
-    box-shadow: none;
-    &:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: "";
-      height: 1px;
-      width: 100%;
-      background: linear-gradient(to right, $grey-40, $grey-60);
-    }
-    li {
-      a {
-        text-transform: capitalize;
-        &:after {
-          background: linear-gradient(to right, $grey-40, $grey-60);
-        }
-        &:hover {
-          background-color: darken($grey-light, 2%);
-        }
+  .column {
+    &:not(:last-child) {
+      @include touch {
+        padding-bottom: 4rem;
       }
+    }
+  }
+  .section {
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }

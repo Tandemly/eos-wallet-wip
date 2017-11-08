@@ -23,12 +23,19 @@ describe('async login middleware', () => {
     const payload = { account_name: 'inita', owner_key: 'abcdefghijklmnop' };
     const response = {
       user: {
-        account_name: 'inita',
-        auth: {},
-        display_name: '',
-        image_url: '',
-        website: '',
+        timezone: '',
+        id: '',
+        name: '',
+        email: '',
+        role: 'user',
+        createdAt: '',        
       },
+      token: {
+        tokenType: '',
+        accessToken: '',
+        refreshToken: '',
+        expiresIn: '',        
+      }
     };
     const expectedActions = [
       { type: 'UNSET_NOTIFICATION' },

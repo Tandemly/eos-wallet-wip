@@ -7,6 +7,7 @@ const refresh = store => next => (action) => {
   const triggerActions = [
     'SUCCESS_POST_TRANSACTION',
     'SUCCEED_LOGIN',
+    'SUCCESS_POST_EOS_ACCOUNT',
     'ROUTE_LOAD'
   ];
 

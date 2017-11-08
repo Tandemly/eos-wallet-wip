@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import Profile from "components/Profile";
 
 // TODO genericize this to network call to specific user
-const mapStateToProps = ({ login: { user } }) => ({
-  name: user.display_name || user.account_name,
-  image: { url: user.image_url }, 
+const mapStateToProps = ({ login: { user: { name, picture }}}) => ({
+  name,
+  image: { url: picture },
 });
 
 const Container = connect(

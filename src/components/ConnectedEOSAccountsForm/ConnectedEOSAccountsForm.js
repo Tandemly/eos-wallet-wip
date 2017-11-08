@@ -78,5 +78,5 @@ const ConnectedEOSAccountsForm = ({
 );
 
 export default reduxForm({
-  form: 'connected-accounts',
+  form: 'connect-eos-account',
 })(ConnectedEOSAccountsForm);

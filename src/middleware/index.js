@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import api from './api';
 import balance from './balance';
+import connectEOSAccount from './connect-eos-account';
 import login from './login';
 import logout from './logout';
 import refresh from './refresh';
@@ -15,6 +16,7 @@ import transfer from './transfer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const _middlewares = [
   thunk,
+  connectEOSAccount,
   balance,
   login,
   signup,

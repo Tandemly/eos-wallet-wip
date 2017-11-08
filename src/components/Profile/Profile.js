@@ -1,27 +1,14 @@
 import * as React from "react";
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import cx from "classnames";
 import css from "./styles.module.scss";
 
 // TODO styles
-const Profile = ({
-  image: {
-    url: src,
-  },
-  currentLocation,
-  name,
-  status,
-}) => (
+const Profile = ({ image: { url: src }, currentLocation, name, status }) => (
   <div className={cx("box", css.profile)}>
     <div className="level">
       <div className="level-left">
         <div className="level-item">
-          <img
-            src={src}
-            className={css.thumbnail}
-            alt={name}
-          />
+          <img src={src} className={css.thumbnail} alt={name} />
         </div>
         <div className="level-item">
           <div>

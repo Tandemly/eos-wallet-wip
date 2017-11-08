@@ -5,12 +5,12 @@ import {
   failPostTransaction } from 'containers/Transfer/reducer';
 import rejectBadResponse from 'util/rejectBadResponse';
 
-export const postTransfer = (payload, token, dispatch) => (
-  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/api/account/transfer`, {
+export const postTransfer = (payload, accessToken, dispatch) => (
+  fetch(`${process.env.REACT_APP_PROXY_ENDPOINT}/v1/transfer`, {
     method: 'POST',
     mode: 'cors',
     headers: {
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload)
@@ -34,8 +34,8 @@ const transfer = store => next => async (action) => {
       isAuthenticated,
       user: {
         account_name: from,
-        id_token,
-        access_token,
+        accessToken,
+
         active_key,
         owner_key,
       } = {},
@@ -58,7 +58,7 @@ const transfer = store => next => async (action) => {
         memo,
         owner_key,
         to,
-      }, access_token, store.dispatch);
+      }, accessToken, store.dispatch);
     } else {
       postTransfer({
         active_key,
@@ -67,7 +67,7 @@ const transfer = store => next => async (action) => {
         memo,
         owner_key,
         to,
-      }, access_token, store.dispatch);
+      }, accessToken, store.dispatch);
     }
   }
 

@@ -5,8 +5,6 @@ import App from "containers/App";
 import Loading from "containers/Loading";
 import { configureStoreAsync } from "util/configureStore";
 
-import store from "fixtures/store";
-
 class Bootloader extends Component {
   state = {
     store: null

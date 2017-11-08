@@ -7,9 +7,13 @@ const numbersOnly = (value, previousValue) => (
   /^\d*\.?\d*?$/.test(value) ? value : previousValue
 );
 
-const Label = () => (
-  <p>Amount
-    <a className="help">Use Full Balance</a>
+const Label = ({ updateAmount }) => (
+  <p>
+    Amount
+    <a 
+      className="help"
+      onClick={updateAmount}
+    >Use Full Balance</a>
   </p>
 );
 
@@ -36,7 +40,7 @@ const TransferForm = ({
       aria-describedby="amount"
       className="input"
       id="amount"
-      label={<Label />}
+      label={<Label updateAmount={updateAmount} />}
       name="amount"
       normalize={numbersOnly}
       pattern="^[0-9.]*$"

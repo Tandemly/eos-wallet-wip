@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Helmet } from 'react-helmet';
+import Notifications from 'containers/Notifications';
 import ResetPassword from 'containers/ResetPassword';
 import ConnectedEOSAccounts from 'containers/ConnectedEOSAccounts';
 
@@ -9,6 +10,8 @@ const Permissions = () => (
       <title>Permissions</title>
     </Helmet>
     <div className="content">
+      <Notifications />
+
       <div className="row">
         <div className="col-12">
           <h2 className="title is-2">Permissions</h2>

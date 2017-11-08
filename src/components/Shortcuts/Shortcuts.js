@@ -5,10 +5,11 @@ import cx from "classnames";
 import css from "./styles.module.scss";
 
 const Shortcuts = ({
+  className,
   data,
 }) => (
   <List
-    className={cx("menulist", css.menulist)}
+    className={cx("menulist", css.menulist, className)}
     data={data}
     renderItem={Shortcut}
   />

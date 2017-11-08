@@ -19,7 +19,7 @@ const LoginForm = ({
       className="input"
       component={renderField}
       id="account_name"
-      label="Account Name"
+      label="Username"
       name="account_name"
       required
       prefixed

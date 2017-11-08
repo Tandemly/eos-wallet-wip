@@ -1,7 +1,6 @@
 @import "../../styles/custom_variables.scss";
 
 .menulist {
-	box-shadow: inset 0px 10px 10px -5px rgba($grey-80,0.3);
 	li {
 		position: relative;
 		a {
@@ -55,6 +54,41 @@
 	.menulist {
 		a {
 			text-transform: capitalize;
+		}
+	}
+	&.logged_in {
+		background-color: $grey-light;
+		position: relative;
+		box-shadow: none;
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: "";
+			height: 1px;
+			width: 100%;
+			background: linear-gradient(to right, $grey-40, $grey-60);
+		}
+		li {
+			a {
+				text-transform: capitalize;
+				&:after {
+					background: linear-gradient(to right, $grey-40, $grey-60);
+				}
+				&:hover {
+					background-color: darken($grey-light, 2%);
+				}
+				&.active:hover {
+					background-color: $orange;
+				}
+			}
+		}
+		&:after {
+			position: absolute;
+			width: 100%;
+			height: 10px;
+			content: "";
+			box-shadow: inset 0px 10px 10px -5px rgba($grey-80,0.3);
 		}
 	}
 }

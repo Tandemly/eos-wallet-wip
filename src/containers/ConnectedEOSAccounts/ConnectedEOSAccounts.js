@@ -1,16 +1,14 @@
 import { connect } from 'react-redux';
-import ConnectedEOSAccountsForm from "components/ConnectedEOSAccountsForm";
+import ConnectedEOSAccountsForm from 'components/ConnectedEOSAccountsForm';
+import { tryPostEOSAccount } from './actions'
 
 /* eslint-disable camelcase */
 const mapDispatchToProps = (dispatch, { history }) => ({
   callAPI(values) {
-    // values
-    // account_name, active_key, owner_key
-
-    // dispatch(tryPostEmail({
-    //   history,
-    //   ...values
-    // }));
+    dispatch(tryPostEOSAccount({
+      history,
+      ...values
+    }));
   },
 });
 

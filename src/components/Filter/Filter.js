@@ -1,20 +1,20 @@
 import * as React from "react";
-import { Field, reduxForm } from 'redux-form';
 import css from "./styles.module.scss";
 import cx from "classnames";
 
-const recfilter = (value, item) => (
-  Object.keys(item).some(k =>
-    k !== 'src' &&
-    k === 'name' ? recfilter(value, item[k].split(' ')) :
-    (typeof item[k] === 'object' || Array.isArray(item[k])) ? recfilter(value, item[k]) : (
-      typeof item[k] === typeof value &&
-      new RegExp(`^${value}`, 'i').test(item[k])
-    )
-  )
-);
+const recfilter = (value, item) =>
+  Object.keys(item).some(
+    k =>
+      k !== "src" && k === "name"
+        ? recfilter(value, item[k].split(" "))
+        : typeof item[k] === "object" || Array.isArray(item[k])
+          ? recfilter(value, item[k])
+          : typeof item[k] === typeof value &&
+            new RegExp(`^${value}`, "i").test(item[k])
+  );
 
-const filter = (data, value) => !value ? data : data.filter(recfilter.bind(null, value));
+const filter = (data, value) =>
+  !value ? data : data.filter(recfilter.bind(null, value));
 
 class Filter extends React.Component {
   constructor(props, context) {
@@ -51,7 +51,7 @@ class Filter extends React.Component {
             </div>
           </div>
         </div>
-    
+
         {React.cloneElement(children, { data: filter(data, filterValue) })}
       </div>
     );
