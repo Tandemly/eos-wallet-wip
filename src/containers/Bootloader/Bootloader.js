@@ -4,6 +4,7 @@ import { Router, Route } from "react-router-dom";
 import App from "containers/App";
 import Loading from "containers/Loading";
 import { configureStoreAsync } from "util/configureStore";
+import { apiRequest } from "util/fetchUtil";
 
 class Bootloader extends Component {
   state = {
@@ -17,6 +18,11 @@ class Bootloader extends Component {
     );
 
     this.setState({ store });
+
+    // quick check for API access + connectivity
+    apiRequest("/v1/status")
+      .then(resp => console.log(`=> API connection: ${resp.message}`))
+      .catch(resp => console.log(`=> API connection: ${resp}`));
   }
 
   render() {
