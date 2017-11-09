@@ -128,14 +128,14 @@ ProfileSchema.statics = {
       });
     }
 
-    console.log("--> looking for user: ", email);
     const user = await this.findOne({ email }).exec();
-    console.log("-> found user:", user);
     const err = {
       status: httpStatus.UNAUTHORIZED,
       isPublic: true
     };
-    if (password) {
+    if (!user) {
+      err.message = "Uknown email address";
+    } else if (password) {
       const matches = await user.passwordMatches(password);
       if (user && matches) {
         return user;
