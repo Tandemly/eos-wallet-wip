@@ -134,7 +134,7 @@ ProfileSchema.statics = {
       isPublic: true
     };
     if (!user) {
-      err.message = "Uknown email address";
+      err.message = "Unknown email address";
     } else if (password) {
       const matches = await user.passwordMatches(password);
       if (user && matches) {
