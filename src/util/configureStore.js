@@ -3,7 +3,7 @@ import { persistStore, autoRehydrate } from "redux-persist";
 import { reducer as reduxFormReducer } from "redux-form";
 import { routerMiddleware } from "react-router-redux";
 import { routerReducer } from "react-router-redux";
-import { reducer as account } from "redux-modules/balance/reducer";
+import accountReducer from "redux-modules/eos-account";
 import { reducer as app } from "containers/App/reducer";
 import { reducer as login } from "redux-modules/login/reducer";
 import { reducer as notification } from "redux-modules/notifications/reducer";
@@ -14,7 +14,7 @@ import middlewares from "middleware";
 
 const reducers = combineReducers({
   app,
-  account,
+  'eos-account': accountReducer,
   form: reduxFormReducer,
   login,
   notification,

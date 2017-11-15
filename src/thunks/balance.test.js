@@ -4,7 +4,8 @@ import { getBalance } from "thunks/balance";
 import {
   tryGetBalance,
   succeedGetBalance
-} from "redux-modules/balance/actions";
+} from "redux-modules/eos-account/balance-actions";
+import type { AccountBalanceResponse } from "./balance";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -24,17 +25,20 @@ describe("getBalance", () => {
     });
 
     const accountName = "inita";
-    const response = {
-      account: {
-        total: "999995.5819 EOS",
-        staked: "0.0000 EOS"
-      }
+    const response: AccountBalanceResponse = {
+      eos_balance: "999995.5819 EOS",
+      staked_balance: "999995.0000 EOS",
+      unstaking_balance: "0.5819 EOS"
     };
     fetch.mockResponse(JSON.stringify(response));
 
     const expectedActions = [
       tryGetBalance(accountName),
-      succeedGetBalance(response.account)
+      succeedGetBalance({
+        total: response.eos_balance,
+        staked: response.staked_balance,
+        unstaked: response.unstaking_balance
+      })
     ];
 
     await store.dispatch(getBalance(accountName));

@@ -2,7 +2,7 @@ import {
   tryPostEOSAccount,
   succeedPostEOSAccount,
   failPostEOSAccount
-} from "redux-modules/connect-eos-accounts/actions";
+} from "redux-modules/eos-signup/actions";
 import { apiRequest } from "util/fetchUtil";
 
 export const connectEosAccount = (

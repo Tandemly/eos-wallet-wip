@@ -4,7 +4,7 @@ import { connectEosAccount } from "thunks/connect-eos-accounts";
 import {
   tryPostEOSAccount,
   succeedPostEOSAccount
-} from "redux-modules/connect-eos-accounts/actions";
+} from "redux-modules/eos-signup/actions";
 
 const mockStore = configureMockStore(middlewares);
 

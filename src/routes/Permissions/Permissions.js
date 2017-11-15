@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Notifications from "containers/Notifications";
 import ConnectedEOSAccounts from "containers/ConnectedEOSAccounts";
 
-const Permissions = () => (
+const Permissions = ({}) => (
   <div>
     <Helmet>
       <title>Accounts</title>

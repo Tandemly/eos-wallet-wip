@@ -3,10 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { change } from 'redux-form';
 import TransferForm from 'components/TransferForm';
 import { tryPostTransaction } from '../../redux-modules/transfer/actions';
+import { selectEOSTotalBalance } from '../../redux-modules/eos-account/selectors';
 
 function setAmountToBalance() {
   return (dispatch, getState) => {
-    const balance = getState().account.account.total;
+    const balance = selectEOSTotalBalance(getState());
 
     return dispatch(change('transfer', 'amount', balance));
   }

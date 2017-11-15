@@ -1,18 +1,17 @@
 //@flow
-import type { AccountBalance } from '../../types/AccountBalance';
+import type { AccountBalance } from "./types";
 
 export const TRY_GET_BALANCE = "TRY_GET_BALANCE";
 export const SUCCESS_GET_BALANCE = "SUCCESS_GET_BALANCE";
 export const FAIL_GET_BALANCE = "FAIL_GET_BALANCE";
 
 type GetBalanceTryAction = {
-  type: "TRY_GET_BALANCE",
-  account: string
+  type: "TRY_GET_BALANCE"
 };
 
 type GetBalanceSuccessAction = {
   type: "SUCCESS_GET_BALANCE",
-  account: AccountBalance
+  balance: AccountBalance
 };
 
 type GetBalanceFailureAction = {
@@ -26,22 +25,17 @@ export type BalanceActions =
   | GetBalanceFailureAction;
 
 export const succeedGetBalance = (
-  account: AccountBalance
+  balance: AccountBalance
 ): GetBalanceSuccessAction => ({
   type: SUCCESS_GET_BALANCE,
-  account
+  balance
 });
 
-export function failGetBalance(errors: any): GetBalanceFailureAction {
-  return {
-    type: FAIL_GET_BALANCE,
-    errors
-  };
-}
+export const failGetBalance = (errors: any): GetBalanceFailureAction => ({
+  type: FAIL_GET_BALANCE,
+  errors
+});
 
-export function tryGetBalance(account: string): GetBalanceTryAction {
-  return {
-    type: TRY_GET_BALANCE,
-    account
-  };
-}
+export const tryGetBalance = (): GetBalanceTryAction => ({
+  type: TRY_GET_BALANCE
+});

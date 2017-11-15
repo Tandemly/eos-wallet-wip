@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import renderField from 'components/Field';
 import Button from "components/Button";
 
-const ConnectedEOSAccountsForm = ({ 
+const ConnectedEOSAccountsForm = ({
   callAPI,
   handleSubmit,
   submitting, }) => (
@@ -61,7 +61,7 @@ const ConnectedEOSAccountsForm = ({
                       disabled={submitting}
                       className="button is-large is-primary"
                       type="submit"
-                      text={submitting ? 'Submitting...' : 'Login to EOS'}
+                      text={submitting ? 'Submitting...' : 'Add Account'}
                     />
                   </div>
                 </div>

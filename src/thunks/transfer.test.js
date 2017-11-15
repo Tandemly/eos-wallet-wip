@@ -12,7 +12,7 @@ import {
 import {
   tryGetBalance,
   succeedGetBalance
-} from "redux-modules/balance/actions";
+} from "redux-modules/eos-account/balance-actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -106,10 +106,9 @@ describe("doTransfer", () => {
     };
 
     const balanceResponse = {
-      account: {
-        total: "999995.5819 EOS",
-        staked: "0.0000 EOS"
-      }
+      eos_balance: "999995.5819 EOS",
+      staked_balance: "999995.0000 EOS",
+      unstaking_balance: "0.5819 EOS"
     };
 
     const transactionsResponse = {
@@ -160,7 +159,11 @@ describe("doTransfer", () => {
       succeedPostTransaction(response),
       tryGetBalance("inita"),
       tryGetTransactions("inita"),
-      succeedGetBalance(balanceResponse.account),
+      succeedGetBalance({
+        total: balanceResponse.eos_balance,
+        staked: balanceResponse.staked_balance,
+        unstaked: balanceResponse.unstaking_balance
+      }),
       succeedGetTransactions(transactionsResponse)
     ];
 

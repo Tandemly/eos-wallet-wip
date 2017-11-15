@@ -39,6 +39,7 @@
     "nodemon": "^1.12.1",
     "npm-run-all": "^4.1.2",
     "numeral": "^2.0.6",
+    "randomatic": "^2.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
@@ -54,7 +55,8 @@
     "redux-form-validators": "^2.1.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.10.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "precommit": "npm run test:once",

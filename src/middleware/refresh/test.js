@@ -1,8 +1,8 @@
 import configureMockStore from "redux-mock-store";
 import middlewares from "middleware";
 import { tryGetTransactions } from "redux-modules/transactions/actions";
-import { tryGetBalance } from "redux-modules/balance/actions";
-import { succeedGetBalance } from "../../redux-modules/balance/actions";
+import { tryGetBalance } from "redux-modules/eos-account/balance-actions";
+import { succeedGetBalance } from "../../redux-modules/eos-account/balance-actions";
 import { succeedGetTransactions } from "../../redux-modules/transactions/actions";
 
 const mockStore = configureMockStore(middlewares);
@@ -23,10 +23,9 @@ describe("async refresh middleware", () => {
     const refreshAction = { type: "SUCCEED_LOGIN" };
 
     const balanceResponse = {
-      account: {
-        total: "999995.5819 EOS",
-        staked: "0.0000 EOS"
-      }
+      eos_balance: "999995.5819 EOS",
+      staked_balance: "999995.0000 EOS",
+      unstaking_balance: "0.5819 EOS"
     };
 
     const transactionsResponse = {
@@ -77,7 +76,11 @@ describe("async refresh middleware", () => {
       refreshAction,
       tryGetBalance(account_name),
       tryGetTransactions(account_name),
-      succeedGetBalance(balanceResponse.account),
+      succeedGetBalance({
+        total: balanceResponse.eos_balance,
+        staked: balanceResponse.staked_balance,
+        unstaked: balanceResponse.unstaking_balance
+      }),
       succeedGetTransactions(transactionsResponse)
     ];
 
