@@ -15,7 +15,7 @@ const LoginForm = ({
   className
 }) => (
   <form onSubmit={handleSubmit(callAPI)} className={className}>
-    <Notifications />
+    <Notifications minimized={!modal} />
 
     <Field
       aria-describedby="email"

@@ -18,9 +18,14 @@ const icons = {
   warn: "icon-fail_warn"
 };
 
-const Notification = ({ text, status = "info", unsetNotification }: Props) =>
+const Notification = ({
+  text,
+  status = "info",
+  minimized = false,
+  unsetNotification
+}: Props) =>
   !text ? null : (
-    <div className={cx(css.notification, css[status])}>
+    <div className={cx(css.notification, css[status], { min: minimized })}>
       <div className={cx(icons[status], css.icon)} />
       {text}
       {unsetNotification && (
