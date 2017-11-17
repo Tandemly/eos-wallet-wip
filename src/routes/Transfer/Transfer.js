@@ -2,7 +2,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Container from "containers/Transfer";
 import Transactions from "containers/Transactions";
-import transactions from "fixtures/transactions";
 
 const Transfer = () => (
   <div className="columns is-desktop content is-variable is-6">

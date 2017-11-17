@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import Container from "containers/Users";
-import Filter from "components/Filter";
+//import Filter from "components/Filter";
 
 // TODO move fixture upstream
 import users from "fixtures/users";

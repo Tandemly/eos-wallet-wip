@@ -2,10 +2,7 @@ import { stopSubmit } from "redux-form";
 import { unsetNotification } from "redux-modules/notifications/actions";
 import { setNotification } from "../../redux-modules/notifications/actions";
 import { DISCONNECT_EOS_ACCOUNT } from "../../redux-modules/eos-account/account-actions";
-import {
-  FAIL_GET_TRANSACTIONS,
-  SUCCESS_GET_TRANSACTIONS
-} from "../../redux-modules/transactions/actions";
+import { FAIL_GET_TRANSACTIONS } from "../../redux-modules/transactions/actions";
 import {
   FAIL_POST_LOGIN,
   SUCCEED_POST_LOGIN

@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import Container from "containers/Transactions";
-import Filter from "components/Filter";
+//import Filter from "components/Filter";
 import { selectRecentTransactions } from "../../redux-modules/transactions/selectors";
 
 const Transactions = ({ transactions }) => (
@@ -20,7 +20,7 @@ const Transactions = ({ transactions }) => (
 
       <div>
         {/*<Filter data={transactions}>*/}
-          <Container />
+        <Container />
         {/*</Filter>*/}
       </div>
     </div>
