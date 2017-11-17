@@ -35,7 +35,6 @@ const RoutesAuthenticated = ({ isAuthenticated, location }) =>
         component={Transactions}
         key="transactions"
       />,
-      <Route path="/users" component={Users} key="users" />,
       <Route path="/user/:id" component={Profile} key="user" />,
       <Route path="/accounts" component={Accounts} key="accounts" />,
       <Route path="/profile" component={EditProfile} key="profile" />
@@ -145,6 +144,7 @@ class App extends React.Component<Props> {
             />
 
             <Switch location={isModalOpen ? this.previousLocation : location}>
+              <Route path="/users" component={Users} key="users" />,
               <Route path="/about" component={About} />
               <Route path="/faq" component={Faq} />
               <RoutesAuthenticated isAuthenticated={isAuthenticated} />
