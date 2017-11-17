@@ -25,10 +25,12 @@ export const selectRecentTransactions = createSelector(
         const kind = to === eosAccountName ? "deposit" : "withdrawal";
         const name = kind === "deposit" ? from : to;
         const amount = transaction.messages[0].data.amount;
+        const memo = transaction.messages[0].data.memo;
         return {
           key: transaction.id,
           date: transaction.createdAt,
           name,
+          memo,
           amount,
           kind
         };

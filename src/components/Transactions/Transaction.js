@@ -2,7 +2,7 @@ import * as React from "react";
 import css from "./styles.module.scss";
 import cx from "classnames";
 
-const Transaction = ({ key, date, image, name, amount, kind }) => (
+const Transaction = ({ key, date, image, name, memo, amount, kind }) => (
   <li className="level box is-mobile" key={key}>
     <div className="level-left">
       <div className="level-item has-text-centered">
@@ -21,6 +21,9 @@ const Transaction = ({ key, date, image, name, amount, kind }) => (
       <div className="level-item">
         <p className="subtitle is-6">
           <a>{name}</a>
+        </p>
+        <p className="subtitle is-6">
+          <a>{memo}</a>
         </p>
       </div>
     </div>
