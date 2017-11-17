@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import dateFormat from "dateformat";
 import { selectEOSAccountName } from "../eos-account/selectors";
 
 const selectTransactionsState = state => state.transactions;
@@ -20,6 +21,11 @@ export const selectRecentTransactions = createSelector(
             transaction.messages[0].data.from === eosAccountName)
       )
       .map(transaction => {
+        const created = Date.parse(transaction.createdAt);
+        const date = {
+          month: dateFormat(created, "mmm"),
+          day: dateFormat(created, "d")
+        };
         const to = transaction.messages[0].data.to;
         const from = transaction.messages[0].data.from;
         const kind = to === eosAccountName ? "deposit" : "withdrawal";
@@ -28,7 +34,7 @@ export const selectRecentTransactions = createSelector(
         const memo = transaction.messages[0].data.memo;
         return {
           key: transaction.id,
-          date: transaction.createdAt,
+          date,
           name,
           memo,
           amount,

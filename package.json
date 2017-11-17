@@ -17,6 +17,7 @@
     "compression": "^1.7.1",
     "concurrently": "^3.5.0",
     "cors": "^2.8.4",
+    "dateformat": "^3.0.2",
     "dotenv-safe": "^4.0.4",
     "empty": "^0.10.1",
     "eosjs-ecc": "^1.6.1",
