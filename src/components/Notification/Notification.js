@@ -26,7 +26,7 @@ const Notification = ({
   unsetNotification
 }: Props) =>
   !text ? null : (
-    <div className={cx(css.notification, css[status], { min: minimized })}>
+    <div className={cx(css.notification, css[status], { [css.min]: minimized })}>
       <div className={cx(icons[status], css.icon)} />
       {text}
       {unsetNotification && (

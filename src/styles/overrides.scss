@@ -253,6 +253,7 @@ a {
 // Menu
 .aside-login {
   background-color: $grey-light;
+  padding: 1.5rem;
   .field {
     margin-bottom: .75rem;
     &.is-grouped {
@@ -279,7 +280,6 @@ a {
     left: 0;
     bottom: -10px;
   }
-  padding: 1.5rem;
   .input-prefix {
     &:after {
       width: 40px;
@@ -292,6 +292,7 @@ a {
   }
   input[type=text], input[type=password] {
     height: 40px;
+    font-size: .875rem
   }
   .text-center {
     text-align: center;
