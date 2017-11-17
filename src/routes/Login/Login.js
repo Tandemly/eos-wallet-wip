@@ -1,6 +1,5 @@
 import * as React from "react";
 import Container from "containers/Login";
-import Notifications from "containers/Notifications";
 
 const Login = ({ handleClose, test }) => (
   <div className={`login ${test}`}>
@@ -13,8 +12,6 @@ const Login = ({ handleClose, test }) => (
       />
     </div>
     <div className="modal-body">
-      <Notifications />
-
       <Container />
     </div>
   </div>

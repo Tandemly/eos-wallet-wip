@@ -23,7 +23,7 @@ const EOSAccount = ({
 }: Props) => (
   <article>
     <h3>EOS</h3>
-    <div className="box">
+    <div className="box double">
       <div className="columns is-desktop">
         <div className="column">
           <Notification

@@ -1,17 +1,16 @@
 import * as React from "react";
-import { Helmet } from 'react-helmet';
-import Container from 'containers/Transactions';
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
+import Container from "containers/Transactions";
 import Filter from "components/Filter";
+import { selectRecentTransactions } from "../../redux-modules/transactions/selectors";
 
-// TODO move fixture upstream
-import transactions from "fixtures/transactions";
-
-const Transactions = () => (
+const Transactions = ({ transactions }) => (
   <div>
     <Helmet>
       <title>Transaction History</title>
     </Helmet>
-    
+
     <div className="content">
       <div className="d-md-flex justify-content-between items-center">
         <div>
@@ -28,4 +27,8 @@ const Transactions = () => (
   </div>
 );
 
-export default Transactions;
+const mapStateToProps = state => ({
+  transactions: selectRecentTransactions(state)
+});
+
+export default connect(mapStateToProps)(Transactions);

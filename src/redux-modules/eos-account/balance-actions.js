@@ -16,7 +16,7 @@ type GetBalanceSuccessAction = {
 
 type GetBalanceFailureAction = {
   type: "FAIL_GET_BALANCE",
-  errors: any
+  error: any
 };
 
 export type BalanceActions =
@@ -31,9 +31,9 @@ export const succeedGetBalance = (
   balance
 });
 
-export const failGetBalance = (errors: any): GetBalanceFailureAction => ({
+export const failGetBalance = (error: any): GetBalanceFailureAction => ({
   type: FAIL_GET_BALANCE,
-  errors
+  error
 });
 
 export const tryGetBalance = (): GetBalanceTryAction => ({

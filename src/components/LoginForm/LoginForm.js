@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import renderField from "components/Field";
 import Button from "components/Button";
+import Notifications from "containers/Notifications";
 
 const LoginForm = ({
   callAPI,
@@ -14,6 +15,8 @@ const LoginForm = ({
   className
 }) => (
   <form onSubmit={handleSubmit(callAPI)} className={className}>
+    <Notifications />
+
     <Field
       aria-describedby="email"
       className="input"
@@ -54,14 +57,13 @@ const LoginForm = ({
           text={submitting ? "Submitting..." : "Login"}
         />
       </div>
-      <div className="control cancel-button">
-        <Button
-          disabled={submitting}
-          className="button is-large is-secondary"
-          type="submit"
-          text="Cancel"
-        />
-      </div>
+      {/*<div className="control cancel-button">*/}
+      {/*<Button*/}
+      {/*className="button is-large is-secondary"*/}
+      {/*onClick={handleClose}*/}
+      {/*text="Cancel"*/}
+      {/*/>*/}
+      {/*</div>*/}
     </div>
 
     <div className={`col-12 ${modal ? "text-left" : "text-center"}`}>

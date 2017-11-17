@@ -8,7 +8,6 @@ const Balance = ({ total, difference }) => (
     <div className={cx("financials u-p3", css.financials)}>
       <p className={cx("title is-1", css.balance)}>
         {numeral(total).format("0.00a")}
-        <span>B</span>
       </p>
       <p className={cx("full_balance is-6", css.full_balance)}>
         {numeral(total).format("0,0[.]0000")}

@@ -11,9 +11,6 @@ exports[`<Balance /> renders without crashing 1`] = `
       className="title is-1"
     >
       0.00
-      <span>
-        B
-      </span>
     </p>
     <p
       className="full_balance is-6"
