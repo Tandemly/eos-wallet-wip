@@ -307,15 +307,11 @@ a {
   }
   .list {
     margin: 0;
-    &.transaction {
-      .heading {
-        margin-bottom: 0;
-      }
-    }
-    &.users {
-      .username {
-        margin-bottom: 0;
-      }
+    .username {
+      font-size: 1rem;
+      line-height: 0.875rem;
+      font-weight: bold;
+      margin: 3px 0 0;
     }
     .level.is-mobile .level-item:not(:last-child) {
       margin-right: 0.75rem;

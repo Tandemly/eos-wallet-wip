@@ -19,12 +19,14 @@ const Transaction = ({ key, date, image, name, memo, amount, kind }) => (
         />
       </div>
       <div className="level-item">
-        <p className="subtitle is-6">
-          <a>{name}</a>
-        </p>
-        <p className="subtitle is-6">
-          <a>{memo}</a>
-        </p>
+        <div>
+          <p className="username">
+            <a>{name}</a>
+          </p>
+          <p className="memo">
+            {memo}
+          </p>
+        </div>
       </div>
     </div>
     <div className="level-right">

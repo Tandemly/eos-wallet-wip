@@ -1,6 +1,4 @@
 import * as React from "react";
-import css from "./styles.module.scss";
-import cx from "classnames";
 
 const User = ({ icon, key, name = "", status, url }) => (
   <li className="level box user is-mobile" key={key}>
@@ -14,10 +12,10 @@ const User = ({ icon, key, name = "", status, url }) => (
       </div>
       <div className="level-item">
         <div>
-          <p className={cx("username", css.username)}>
+          <p className="username">
             <a>{name}</a>
           </p>
-          <p className={cx("memo", css.memo)}>Memo</p>
+          <p className="memo">Memo</p>
         </div>
       </div>
     </div>
