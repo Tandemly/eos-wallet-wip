@@ -168,7 +168,6 @@ describe("doTransfer", () => {
         staked: balanceResponse.staked_balance,
         unstaked: balanceResponse.unstaking_balance
       }),
-      unsetNotification(),
       succeedGetTransactions(transactionsResponse)
     ];
 
