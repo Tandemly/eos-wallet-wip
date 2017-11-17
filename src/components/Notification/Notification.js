@@ -8,6 +8,7 @@ type Status = "success" | "info" | "error" | "warn";
 type Props = {
   text: string,
   status?: Status,
+  minimized?: boolean,
   unsetNotification?: () => mixed
 };
 
