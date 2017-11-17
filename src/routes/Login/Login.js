@@ -6,13 +6,10 @@ const Login = ({ handleClose, test }) => (
     <div className="login-header modal-header">
       <h3 className="title is-3">Login to your wallet</h3>
 
-      <button
-        className="js-modal-close"
-        onClick={handleClose}
-      />
+      <button className="js-modal-close" onClick={handleClose} />
     </div>
     <div className="modal-body">
-      <Container />
+      <Container modal />
     </div>
   </div>
 );

@@ -46,7 +46,7 @@ const authLinks = [
 
 const Menu = ({ isAuthenticated }) => (
   <div className="menu p-lg">
-    {!isAuthenticated && <Login className="aside-login" />}
+    {!isAuthenticated && <Login className="aside-login" modal={false} />}
 
     {isAuthenticated && <Balance />}
 
