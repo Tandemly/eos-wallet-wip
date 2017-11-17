@@ -1,30 +1,45 @@
 import { stopSubmit } from "redux-form";
 import { unsetNotification } from "redux-modules/notifications/actions";
 import { setNotification } from "../../redux-modules/notifications/actions";
+import { DISCONNECT_EOS_ACCOUNT } from "../../redux-modules/eos-account/account-actions";
+import {
+  FAIL_GET_TRANSACTIONS,
+  SUCCESS_GET_TRANSACTIONS
+} from "../../redux-modules/transactions/actions";
+import {
+  FAIL_POST_LOGIN,
+  SUCCEED_POST_LOGIN
+} from "../../redux-modules/login/actions";
+import {
+  FAIL_POST_TRANSACTION,
+  SUCCESS_POST_TRANSACTION
+} from "../../redux-modules/transfer/actions";
+import {
+  FAIL_GET_BALANCE,
+  SUCCESS_GET_BALANCE
+} from "../../redux-modules/eos-account/balance-actions";
+import {
+  FAIL_POST_EOS_ACCOUNT,
+  SUCCESS_POST_EOS_ACCOUNT
+} from "../../redux-modules/eos-signup/actions";
+import { FAIL_POST_SIGNUP } from "../../redux-modules/signup/actions";
 
 const api = store => next => action => {
   const errorActions = [
-    "FAIL_POST_LOGIN",
-    "FAIL_POST_TRANSACTION",
-    "FAIL_POST_EMAIL",
-    "FAIL_POST_PHONE",
-    "FAIL_POST_USERNAME",
-    "FAIL_POST_SIGNUP",
-    "FAIL_GET_BALANCE",
-    "FAIL_GET_TRANSACTIONS"
+    FAIL_POST_LOGIN,
+    FAIL_GET_BALANCE,
+    FAIL_GET_TRANSACTIONS,
+    FAIL_POST_SIGNUP,
+    FAIL_POST_EOS_ACCOUNT,
+    FAIL_POST_TRANSACTION
   ];
 
   const clearNotificationActions = [
-    "ROUTE_LOAD",
-    "ROUTE_NAVIGATE",
-    "SUCCEED_POST_LOGIN",
-    "SUCCEED_POST_TRANSACTION",
-    "SUCCEED_POST_EMAIL",
-    "SUCCEED_POST_PHONE",
-    "SUCCEED_POST_USERNAME",
-    "SUCCEED_POST_SIGNUP",
-    "SUCCEED_GET_BALANCE",
-    "SUCCEED_GET_TRANSACTIONS"
+    SUCCEED_POST_LOGIN,
+    SUCCESS_POST_TRANSACTION,
+    SUCCESS_GET_BALANCE,
+    SUCCESS_POST_EOS_ACCOUNT,
+    DISCONNECT_EOS_ACCOUNT
   ];
 
   if (

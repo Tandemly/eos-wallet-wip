@@ -5,6 +5,7 @@ import {
   tryGetTransactions,
   succeedGetTransactions
 } from "redux-modules/transactions/actions";
+import { unsetNotification } from "../redux-modules/notifications/actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -65,6 +66,7 @@ describe("getTransactions", () => {
 
     const expectedActions = [
       tryGetTransactions(accountName),
+      unsetNotification(),
       succeedGetTransactions(response)
     ];
 

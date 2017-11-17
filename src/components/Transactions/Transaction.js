@@ -30,7 +30,7 @@ const Transaction = ({ key, date, image, name, amount, kind }) => (
           {amount}
           <span
             className={cx(
-              kind === "deposit"
+              kind === "withdrawal"
                 ? `icon-transfer_to ${css.iconTransferTo}`
                 : `icon-transfer_from ${css.iconTransferFrom}`,
               "u-ml1"

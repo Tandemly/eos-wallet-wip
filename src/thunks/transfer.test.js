@@ -13,6 +13,7 @@ import {
   tryGetBalance,
   succeedGetBalance
 } from "redux-modules/eos-account/balance-actions";
+import { unsetNotification } from "../redux-modules/notifications/actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -157,14 +158,17 @@ describe("doTransfer", () => {
 
     const expectedActions = [
       tryPostTransaction(payload),
+      unsetNotification(),
       succeedPostTransaction(response),
       tryGetBalance("inita"),
       tryGetTransactions("inita"),
+      unsetNotification(),
       succeedGetBalance({
         total: balanceResponse.eos_balance,
         staked: balanceResponse.staked_balance,
         unstaked: balanceResponse.unstaking_balance
       }),
+      unsetNotification(),
       succeedGetTransactions(transactionsResponse)
     ];
 

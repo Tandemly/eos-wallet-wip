@@ -6,6 +6,7 @@ import {
   succeedGetBalance
 } from "redux-modules/eos-account/balance-actions";
 import type { AccountBalanceResponse } from "./balance";
+import { unsetNotification } from "../redux-modules/notifications/actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -38,6 +39,7 @@ describe("getBalance", () => {
 
     const expectedActions = [
       tryGetBalance(accountName),
+      unsetNotification(),
       succeedGetBalance({
         total: response.eos_balance,
         staked: response.staked_balance,

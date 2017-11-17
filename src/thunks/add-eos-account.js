@@ -21,7 +21,7 @@ export const addEOSAccount = (
       privateKey: activeKey
     };
   } catch (error) {
-    dispatch(setNotification("Invalid Active Key (Private)"));
+    dispatch(setNotification("Invalid Active Key (Private)", "error"));
     return;
   }
 
@@ -31,7 +31,7 @@ export const addEOSAccount = (
       privateKey: ownerKey
     };
   } catch (error) {
-    dispatch(setNotification("Invalid Owner Key (Private)"));
+    dispatch(setNotification("Invalid Owner Key (Private)", "error"));
     return;
   }
 

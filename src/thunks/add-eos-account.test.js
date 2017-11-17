@@ -29,7 +29,9 @@ describe("addEOSAccount", () => {
     const ownerKey = ecc.randomKey();
     const activeKey = randomize("aA0", 64);
 
-    const expectedActions = [setNotification("Invalid Active Key (Private)")];
+    const expectedActions = [
+      setNotification("Invalid Active Key (Private)", "error")
+    ];
 
     await store.dispatch(addEOSAccount(accountName, ownerKey, activeKey));
     expect(store.getActions()).toEqual(expectedActions);
@@ -49,7 +51,9 @@ describe("addEOSAccount", () => {
     const ownerKey = randomize("aA0", 64);
     const activeKey = ecc.randomKey();
 
-    const expectedActions = [setNotification("Invalid Owner Key (Private)")];
+    const expectedActions = [
+      setNotification("Invalid Owner Key (Private)", "error")
+    ];
 
     await store.dispatch(addEOSAccount(accountName, ownerKey, activeKey));
     expect(store.getActions()).toEqual(expectedActions);
