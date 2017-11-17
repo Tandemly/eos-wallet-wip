@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import Transactions from 'components/Transactions';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import Transactions from "components/Transactions";
+import { selectRecentTransactions } from "../../redux-modules/transactions/selectors";
 
 // TODO parameterize props
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  data: selectRecentTransactions(state)
 });
 
-const Container = connect(
-  mapStateToProps,
-)(Transactions);
+const Container = connect(mapStateToProps)(Transactions);
 
 export default withRouter(Container);

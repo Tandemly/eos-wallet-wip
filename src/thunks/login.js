@@ -32,5 +32,5 @@ export const doLogin = (
 
 export const doLogout = () => (dispatch: Dispatch<*>) => {
   dispatch(logout());
-  dispatch(push("/login"));
+  dispatch(push("/users"));
 };

@@ -15,9 +15,9 @@ const Users = () => (
     <h2 className="title is-2">Users</h2>
 
     <div>
-      <Filter data={users}>
-        <Container />
-      </Filter>
+      {/*<Filter data={users}>*/}
+      <Container data={users} />
+      {/*</Filter>*/}
     </div>
   </div>
 );

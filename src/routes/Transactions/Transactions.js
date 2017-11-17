@@ -19,9 +19,9 @@ const Transactions = ({ transactions }) => (
       </div>
 
       <div>
-        <Filter data={transactions}>
+        {/*<Filter data={transactions}>*/}
           <Container />
-        </Filter>
+        {/*</Filter>*/}
       </div>
     </div>
   </div>
