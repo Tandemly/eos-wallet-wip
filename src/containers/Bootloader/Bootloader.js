@@ -6,6 +6,19 @@ import Loading from "containers/Loading";
 import { configureStoreAsync } from "util/configureStore";
 import { apiRequest } from "util/fetchUtil";
 import { unsetNotification } from "../../redux-modules/notifications/actions";
+import APIClient from "../../util/apiClient";
+
+const txn = {
+  code: "eos",
+  type: "transfer",
+  authorization: [{ account: "inita", permission: "active" }],
+  data: {
+    from: "inita",
+    to: "initb",
+    amount: 100,
+    memo: "memo"
+  }
+};
 
 class Bootloader extends Component {
   state = {
@@ -22,6 +35,22 @@ class Bootloader extends Component {
     apiRequest("/v1/status")
       .then(resp => console.log(`=> API connection: ${resp.message}`))
       .catch(resp => console.log(`=> API connection: ${resp}`));
+
+    // quick check on api client (inita private key)
+    const api = new APIClient({
+      keyProvider: ["5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"]
+    });
+    api
+      .get("/v1/status")
+      .then(resp => console.log(`=> api client status: ${resp}`));
+    api
+      .post("/v1/transactions", {
+        scope: ["inita", "initb"],
+        messages: [txn]
+      })
+      .then(resp => {
+        console.log(`=> api post: ${JSON.stringify(resp, null, 2)}`);
+      });
   }
 
   render() {
