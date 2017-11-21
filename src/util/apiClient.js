@@ -102,6 +102,11 @@ class APIClient {
     this.structs = this.eos.fc.structs;
   }
 
+  setKeyProvider(keyProvider) {
+    this.keyProvider = keyProvider;
+    console.log("--> set keyProvider:", this.keyProvider);
+  }
+
   async get(path, opts = {}) {
     const options = Object.assign({}, defaultAPIOptions, opts);
     return await request(`${apiEndpoint}${path}`, options);
@@ -184,4 +189,8 @@ class APIClient {
   }
 }
 
+// Export singleton instance
+export let apiClient = new APIClient({ keyProvider: [] });
+
+// Export class
 export default APIClient;
