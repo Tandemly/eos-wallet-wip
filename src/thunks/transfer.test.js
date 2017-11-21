@@ -4,16 +4,16 @@ import { doTransfer } from "thunks/transfer";
 import {
   tryPostTransaction,
   succeedPostTransaction
-} from "redux-modules/transfer/actions";
+} from "redux-modules/transfer/transfer-actions";
 import {
   tryGetTransactions,
   succeedGetTransactions
-} from "redux-modules/transactions/actions";
+} from "redux-modules/transactions/transactions-actions";
 import {
   tryGetBalance,
   succeedGetBalance
 } from "redux-modules/eos-account/balance-actions";
-import { unsetNotification } from "../redux-modules/notifications/actions";
+import { unsetNotification } from "../redux-modules/notifications/notifications-actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -22,15 +22,10 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 describe("doTransfer", () => {
   it("on successful transaction POST, dispatches succeedPostTransaction action", async () => {
     const store = mockStore({
-      login: {
+      user: {
         isAuthenticated: true
       },
-      "eos-account": {
-        account: {
-          accountName: "inita"
-        }
-      },
-      "eos-account": {
+      eosAccount: {
         account: {
           accountName: "inita"
         }

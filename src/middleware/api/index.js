@@ -1,16 +1,16 @@
 import { stopSubmit } from "redux-form";
-import { unsetNotification } from "redux-modules/notifications/actions";
-import { setNotification } from "../../redux-modules/notifications/actions";
+import { unsetNotification } from "redux-modules/notifications/notifications-actions";
+import { setNotification } from "../../redux-modules/notifications/notifications-actions";
 import { DISCONNECT_EOS_ACCOUNT } from "../../redux-modules/eos-account/account-actions";
-import { FAIL_GET_TRANSACTIONS } from "../../redux-modules/transactions/actions";
+import { FAIL_GET_TRANSACTIONS } from "../../redux-modules/transactions/transactions-actions";
 import {
-  FAIL_POST_LOGIN,
-  SUCCEED_POST_LOGIN
-} from "../../redux-modules/login/actions";
+  FAIL_LOGIN,
+  SUCCEED_LOGIN
+} from "../../redux-modules/user/user-actions";
 import {
   FAIL_POST_TRANSACTION,
   SUCCESS_POST_TRANSACTION
-} from "../../redux-modules/transfer/actions";
+} from "../../redux-modules/transfer/transfer-actions";
 import {
   FAIL_GET_BALANCE,
   SUCCESS_GET_BALANCE
@@ -19,11 +19,11 @@ import {
   FAIL_POST_EOS_ACCOUNT,
   SUCCESS_POST_EOS_ACCOUNT
 } from "../../redux-modules/eos-signup/actions";
-import { FAIL_POST_SIGNUP } from "../../redux-modules/signup/actions";
+import { FAIL_POST_SIGNUP } from "../../redux-modules/user/signup-actions";
 
 const api = store => next => action => {
   const errorActions = [
-    FAIL_POST_LOGIN,
+    FAIL_LOGIN,
     FAIL_GET_BALANCE,
     FAIL_GET_TRANSACTIONS,
     FAIL_POST_SIGNUP,
@@ -32,7 +32,7 @@ const api = store => next => action => {
   ];
 
   const clearNotificationActions = [
-    SUCCEED_POST_LOGIN,
+    SUCCEED_LOGIN,
     SUCCESS_POST_TRANSACTION,
     SUCCESS_GET_BALANCE,
     SUCCESS_POST_EOS_ACCOUNT,

@@ -5,7 +5,7 @@ import {
 } from "redux-modules/eos-account/account-actions";
 import ecc from "eosjs-ecc";
 import type { KeyPair } from "../redux-modules/eos-account/types";
-import { setNotification } from "../redux-modules/notifications/actions";
+import { setNotification } from "../redux-modules/notifications/notifications-actions";
 
 export const addEOSAccount = (
   accountName,

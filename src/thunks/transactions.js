@@ -2,9 +2,9 @@ import camelcaseObject from "camelcase-object";
 import {
   succeedGetTransactions,
   failGetTransactions
-} from "redux-modules/transactions/actions";
+} from "redux-modules/transactions/transactions-actions";
 import { apiRequest } from "../util/fetchUtil";
-import { tryGetTransactions } from "../redux-modules/transactions/actions";
+import { tryGetTransactions } from "../redux-modules/transactions/transactions-actions";
 
 export const getTransactions = accountName => async dispatch => {
   dispatch(tryGetTransactions(accountName));

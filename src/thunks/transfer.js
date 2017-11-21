@@ -2,7 +2,7 @@ import {
   tryPostTransaction,
   succeedPostTransaction,
   failPostTransaction
-} from "redux-modules/transfer/actions";
+} from "redux-modules/transfer/transfer-actions";
 import { apiRequest } from "../util/fetchUtil";
 
 export const doTransfer = (

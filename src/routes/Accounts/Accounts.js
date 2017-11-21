@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import ConnectedEOSAccounts from "containers/AddEOSAccount";
 import EOSAccount from "containers/EOSAccount";
 import Notifications from "../../containers/Notifications/index";
-import { selectEOSAccountName } from "../../redux-modules/eos-account/selectors";
+import { selectEOSAccountName } from "../../redux-modules/eos-account/account-selectors";
 import { connect } from "react-redux";
 
 type Props = {

@@ -1,10 +1,10 @@
 /* eslint-disable camelcase, consistent-return */
 import { getTransactions } from "thunks/transactions";
 import { getBalance } from "thunks/balance";
-import { SUCCEED_POST_LOGIN } from "../../redux-modules/login/actions";
-import { SUCCESS_POST_TRANSACTION } from "../../redux-modules/transfer/actions";
-import { selectEOSAccountName } from "../../redux-modules/eos-account/selectors";
-import { selectWalletUserAuthenticated } from "../../redux-modules/login/selectors";
+import { SUCCEED_LOGIN } from "../../redux-modules/user/user-actions";
+import { SUCCESS_POST_TRANSACTION } from "../../redux-modules/transfer/transfer-actions";
+import { selectEOSAccountName } from "../../redux-modules/eos-account/account-selectors";
+import { selectWalletUserAuthenticated } from "../../redux-modules/user/user-selectors";
 import { SET_EOS_ACCOUNT_NAME } from "../../redux-modules/eos-account/account-actions";
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -13,9 +13,8 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const refresh = store => next => action => {
   const triggerActions = [
     SUCCESS_POST_TRANSACTION,
-    SUCCEED_POST_LOGIN,
-    SET_EOS_ACCOUNT_NAME,
-    "ROUTE_LOAD"
+    SUCCEED_LOGIN,
+    SET_EOS_ACCOUNT_NAME
   ];
 
   const eosAccountName =
@@ -24,7 +23,7 @@ const refresh = store => next => action => {
       : selectEOSAccountName(store.getState());
   const isAuthenticated =
     selectWalletUserAuthenticated(store.getState()) ||
-    action.type === SUCCEED_POST_LOGIN;
+    action.type === SUCCEED_LOGIN;
 
   if (
     triggerActions.some(t => action.type === t) &&

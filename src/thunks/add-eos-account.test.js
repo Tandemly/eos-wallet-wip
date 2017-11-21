@@ -5,7 +5,7 @@ import ecc from "eosjs-ecc";
 import randomize from "randomatic";
 import middlewares from "../middleware";
 import { addEOSAccount } from "thunks/add-eos-account";
-import { setNotification } from "../redux-modules/notifications/actions";
+import { setNotification } from "../redux-modules/notifications/notifications-actions";
 import {
   setEOSAccountName,
   setEOSActiveKeys,

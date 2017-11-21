@@ -6,7 +6,7 @@ import {
   succeedGetBalance
 } from "redux-modules/eos-account/balance-actions";
 import type { AccountBalanceResponse } from "./balance";
-import { unsetNotification } from "../redux-modules/notifications/actions";
+import { unsetNotification } from "../redux-modules/notifications/notifications-actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -14,15 +14,10 @@ describe("getBalance", () => {
   it("on successful network call, dispatches succeedGetBalance action", async () => {
     const store = mockStore({
       balance: [],
-      login: {
+      user: {
         isAuthenticated: true
       },
-      "eos-account": {
-        account: {
-          accountName: "testeos"
-        }
-      },
-      "eos-account": {
+      eosAccount: {
         account: {
           accountName: "testeos"
         }

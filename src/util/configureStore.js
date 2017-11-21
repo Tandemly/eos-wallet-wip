@@ -1,29 +1,46 @@
 import { createStore, compose, combineReducers, applyMiddleware } from "redux";
-import { persistStore, autoRehydrate } from "redux-persist";
-import { reducer as reduxFormReducer } from "redux-form";
+import { persistStore, persistReducer } from "redux-persist";
+import { reducer as form } from "redux-form";
 import { routerMiddleware } from "react-router-redux";
 import { routerReducer } from "react-router-redux";
-import accountReducer from "redux-modules/eos-account";
-import { reducer as app } from "containers/App/reducer";
-import { reducer as login } from "redux-modules/login/reducer";
-import { reducer as notification } from "redux-modules/notifications/reducer";
-import { reducer as transactions } from "redux-modules/transactions/reducer";
-import { reducer as users } from "redux-modules/users/reducer";
+import app from "redux-modules/app";
+import user from "redux-modules/user";
+import notification from "redux-modules/notifications";
+import transactions from "redux-modules/transactions";
 import { createMemoryHistory } from "history";
 import middlewares from "middleware";
+import sessionStorage from "redux-persist/lib/storage/session";
+import { rehydrateAccounts } from "../middleware/account-persist/account-persist-actions";
+import { selectWalletUserAuthenticated } from "../redux-modules/user/user-selectors";
 
-const reducers = combineReducers({
+let store;
+let persistor;
+
+const reducers = {
   app,
-  'eos-account': accountReducer,
-  form: reduxFormReducer,
-  login,
+  form: persistReducer(
+    {
+      key: "forms",
+      storage: sessionStorage
+    },
+    form
+  ),
+  user,
   notification,
   transactions,
-  users,
-  routing: routerReducer
-});
+  routing: persistReducer(
+    {
+      key: "routing",
+      storage: sessionStorage
+    },
+    routerReducer
+  )
+};
 
-function configureStoreAsync(history) {
+export const configureStore = (
+  preloadState,
+  history = createMemoryHistory()
+) => {
   /* eslint-disable-next-line no-underscore-dangle */
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -32,26 +49,35 @@ function configureStoreAsync(history) {
     applyMiddleware(...middlewares, routerMiddleware(history))
   );
 
-  return new Promise((resolve, reject) => {
-    try {
-      const store = createStore(reducers, compose(autoRehydrate(), enhancers));
-
-      persistStore(store, {}, () => resolve(store));
-    } catch (e) {
-      reject(e);
+  store = createStore(combineReducers(reducers), preloadState, enhancers);
+  store.reducers = reducers;
+  persistor = persistStore(store, undefined, () => {
+    if (selectWalletUserAuthenticated(store.getState())) {
+      store.dispatch(rehydrateAccounts());
     }
   });
-}
 
-// NOTE sans rehydrate / local storage
-function configureStore(preloadState) {
-  const history = createMemoryHistory();
+  return { store, persistor };
+};
 
-  return createStore(
-    reducers,
-    preloadState,
-    compose(applyMiddleware(...middlewares, routerMiddleware(history)))
-  );
-}
+export const addReducer = (name, reducer) => {
+  if (!store.reducers[name]) {
+    store.reducers = {
+      ...store.reducers,
+      [name]: reducer
+    };
 
-export { configureStoreAsync, configureStore };
+    console.log(JSON.stringify(store.reducers));
+
+    store.replaceReducer(combineReducers(store.reducers));
+    persistor.persist();
+  }
+};
+
+export const removeReducer = reducerName => {
+  Reflect.deleteProperty(store.reducers, reducerName);
+
+  console.log(JSON.stringify(store.reducers));
+
+  store.replaceReducer(combineReducers(store.reducers));
+};

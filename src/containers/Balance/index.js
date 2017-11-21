@@ -3,7 +3,7 @@ import Balance from "components/Balance";
 import {
   selectEOSBalanceDifference,
   selectEOSTotalBalance
-} from "../../redux-modules/eos-account/selectors";
+} from "../../redux-modules/eos-account/account-selectors";
 
 /* eslint-disable camelcase */
 const mapStateToProps = state => ({

@@ -8,7 +8,7 @@ import {
   selectEOSBalanceDifference,
   selectEOSOwnerKeys,
   selectEOSTotalBalance
-} from "./selectors";
+} from "./account-selectors";
 
 describe("EOS Account Selectors", () => {
   const accountName = randomize("*", 10);
@@ -38,7 +38,7 @@ describe("EOS Account Selectors", () => {
     }
   };
   const state = {
-    "eos-account": eosState
+    eosAccount: eosState
   };
 
   describe("account name selector", () => {

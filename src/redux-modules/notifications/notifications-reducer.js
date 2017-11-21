@@ -1,4 +1,4 @@
-import { SET_NOTIFICATION, UNSET_NOTIFICATION } from "./actions";
+import { SET_NOTIFICATION, UNSET_NOTIFICATION } from "./notifications-actions";
 
 const initialState = {
   notification: {
@@ -7,7 +7,7 @@ const initialState = {
   }
 };
 
-export function reducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SET_NOTIFICATION:
       return {
@@ -19,4 +19,4 @@ export function reducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};

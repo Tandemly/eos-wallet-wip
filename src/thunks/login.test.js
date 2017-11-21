@@ -2,24 +2,24 @@
 import configureMockStore from "redux-mock-store";
 import { push } from "react-router-redux";
 import middlewares from "../middleware";
-import { tryPostLogin, succeedPostLogin } from "../redux-modules/login/actions";
-import { unsetNotification } from "../redux-modules/notifications/actions";
+import {
+  tryPostLogin,
+  succeedPostLogin,
+  setProfile
+} from "../redux-modules/user/user-actions";
+import { unsetNotification } from "../redux-modules/notifications/notifications-actions";
 import { doLogin } from "./login";
+import { rehydrateAccounts } from "../middleware/account-persist/account-persist-actions";
 
 const mockStore = configureMockStore(middlewares);
 
 describe("doLogin", () => {
   it("on login success, dispatch succeedPostLogin", async () => {
     const store = mockStore({
-      login: {
+      user: {
         isAuthenticated: false
       },
-      "eos-account": {
-        account: {
-          accountName: "testeos"
-        }
-      },
-      "eos-account": {
+      eosAccount: {
         account: {
           accountName: "testeos"
         }
@@ -43,8 +43,10 @@ describe("doLogin", () => {
     const expectedActions = [
       tryPostLogin(email, password),
       unsetNotification(),
-      succeedPostLogin(profile),
-      push("/")
+      succeedPostLogin(email, password),
+      setProfile(profile),
+      push("/"),
+      rehydrateAccounts()
     ];
 
     await store.dispatch(doLogin(email, password));

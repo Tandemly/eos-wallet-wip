@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { change } from 'redux-form';
 import TransferForm from 'components/TransferForm';
-import { tryPostTransaction } from '../../redux-modules/transfer/actions';
-import { selectEOSTotalBalance } from '../../redux-modules/eos-account/selectors';
+import { tryPostTransaction } from '../../redux-modules/transfer/transfer-actions';
+import { selectEOSTotalBalance } from '../../redux-modules/eos-account/account-selectors';
 
 function setAmountToBalance() {
   return (dispatch, getState) => {

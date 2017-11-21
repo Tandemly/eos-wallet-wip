@@ -4,7 +4,7 @@ import { getTransactions } from "thunks/transactions";
 import {
   tryGetTransactions,
   succeedGetTransactions
-} from "redux-modules/transactions/actions";
+} from "redux-modules/transactions/transactions-actions";
 
 const mockStore = configureMockStore(middlewares);
 

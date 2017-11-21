@@ -19,10 +19,13 @@ import Profile from "routes/Profile";
 import Accounts from "routes/Accounts";
 import EditProfile from "routes/EditProfile";
 import NoMatch from "routes/NoMatch";
-import { toggleMenu, closeMenu } from "./reducer";
+import { closeMenu } from "../../redux-modules/app/app-actions";
 import { doLogout } from "../../thunks/login";
 
 import "./App.scss";
+import { toggleMenu } from "../../redux-modules/app/app-actions";
+import { selectWalletUserAuthenticated } from "../../redux-modules/user/user-selectors";
+import { selectIsMenuOpen } from "../../redux-modules/app/app-selectors";
 
 const RoutesAuthenticated = ({ isAuthenticated, location }) =>
   !isAuthenticated ? (
@@ -165,12 +168,9 @@ class App extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = ({
-  app: { isMenuOpen },
-  login: { isAuthenticated }
-}) => ({
-  isAuthenticated: true,
-  isMenuOpen
+const mapStateToProps = state => ({
+  isAuthenticated: selectWalletUserAuthenticated(state),
+  isMenuOpen: selectIsMenuOpen(state)
 });
 
 const mapDispatchToProps = dispatch => ({

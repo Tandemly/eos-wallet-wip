@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Transactions from "components/Transactions";
-import { selectRecentTransactions } from "../../redux-modules/transactions/selectors";
+import { selectRecentTransactions } from "../../redux-modules/transactions/transactions-selectors";
 
 // TODO parameterize props
 const mapStateToProps = state => ({

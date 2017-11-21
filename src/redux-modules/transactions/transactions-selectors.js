@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import dateFormat from "dateformat";
-import { selectEOSAccountName } from "../eos-account/selectors";
+import { selectEOSAccountName } from "../eos-account/account-selectors";
 
 const selectTransactionsState = state => state.transactions;
 

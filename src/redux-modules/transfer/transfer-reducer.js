@@ -2,7 +2,7 @@ import {
   FAIL_POST_TRANSACTION,
   SUCCESS_POST_TRANSACTION,
   TRY_POST_TRANSACTION
-} from "./actions";
+} from "./transfer-actions";
 
 // TODO move memo = ' ' upstream
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   }
 };
 
-export function reducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case TRY_POST_TRANSACTION:
       return {
@@ -40,4 +40,4 @@ export function reducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};

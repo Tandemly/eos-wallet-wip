@@ -5,6 +5,7 @@
   "proxy": "http://localhost:9000",
   "dependencies": {
     "@tandem.ly/react-scripts": "^1.0.19",
+    "@tandem.ly/redux-persist-transform-encrypt": "^2.0.1",
     "async": "^2.6.0",
     "bcrypt": "^1.0.3",
     "bcryptjs": "^2.4.3",
@@ -33,6 +34,7 @@
     "jest-enzyme": "^4.0.0",
     "joi": "10.4.1",
     "jwt-decode": "^2.2.0",
+    "localforage": "^1.5.3",
     "lodash": "^4.17.4",
     "mathjs": "^3.16.4",
     "method-override": "^2.3.10",
@@ -40,6 +42,7 @@
     "moment-timezone": "^0.5.14",
     "mongoose": "^4.13.0",
     "morgan": "^1.9.0",
+    "nano-md5": "^1.0.3",
     "nodemon": "^1.12.1",
     "npm-run-all": "^4.1.2",
     "numeral": "^2.0.6",
@@ -58,7 +61,8 @@
     "redux-form": "^7.1.1",
     "redux-form-validators": "^2.1.0",
     "redux-logger": "^3.0.6",
-    "redux-persist": "^4.10.2",
+    "redux-persist": "^5.4.0",
+    "redux-persist-cookie-storage": "^0.4.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"
   },

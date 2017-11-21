@@ -1,11 +1,11 @@
 import configureMockStore from "redux-mock-store";
 import middlewares from "middleware";
-import { tryGetTransactions } from "redux-modules/transactions/actions";
+import { tryGetTransactions } from "redux-modules/transactions/transactions-actions";
 import { tryGetBalance } from "redux-modules/eos-account/balance-actions";
 import { succeedGetBalance } from "../../redux-modules/eos-account/balance-actions";
-import { succeedGetTransactions } from "../../redux-modules/transactions/actions";
-import { SUCCEED_POST_LOGIN } from "../../redux-modules/login/actions";
-import { unsetNotification } from "../../redux-modules/notifications/actions";
+import { succeedGetTransactions } from "../../redux-modules/transactions/transactions-actions";
+import { SUCCEED_LOGIN } from "../../redux-modules/user/user-actions";
+import { unsetNotification } from "../../redux-modules/notifications/notifications-actions";
 
 const mockStore = configureMockStore(middlewares);
 
@@ -15,16 +15,16 @@ describe("async refresh middleware", () => {
   it("on refreshAction, dispatches tryGetBalance and tryGetTransactions action", async () => {
     const account_name = "testeos";
     const store = mockStore({
-      login: {
+      user: {
         isAuthenticated: true
       },
-      "eos-account": {
+      eosAccount: {
         account: {
           accountName: account_name
         }
       }
     });
-    const refreshAction = { type: SUCCEED_POST_LOGIN };
+    const refreshAction = { type: SUCCEED_LOGIN };
 
     const balanceResponse = {
       eos_balance: "999995.5819 EOS",

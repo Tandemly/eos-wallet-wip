@@ -4,7 +4,7 @@ import {
   selectEOSAccountName,
   selectEOSActiveKeys,
   selectEOSOwnerKeys
-} from "../../redux-modules/eos-account/selectors";
+} from "../../redux-modules/eos-account/account-selectors";
 import { disconnectEOSAccount } from "../../redux-modules/eos-account/account-actions";
 
 const mapStateToProps = state => ({

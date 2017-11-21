@@ -1,6 +1,9 @@
 //@flow
-import { tryPostSignup, failPostSignup } from "redux-modules/signup/actions";
-import { succeedPostLogin } from "redux-modules/login/actions";
+import {
+  tryPostSignup,
+  failPostSignup
+} from "redux-modules/user/signup-actions";
+import { succeedPostLogin, setProfile } from "redux-modules/user/user-actions";
 import { appRequest } from "util/fetchUtil";
 import type { Dispatch } from "redux";
 import type { UserProfile } from "types/UserProfile";
@@ -19,7 +22,8 @@ export const doSignUp = (
       body: JSON.stringify({ email, password })
     });
     const profile: UserProfile = (camelcaseObject(response): UserProfile);
-    dispatch(succeedPostLogin(profile));
+    dispatch(succeedPostLogin(email, password));
+    dispatch(setProfile(profile));
     dispatch(push("/"));
   } catch (error) {
     dispatch(failPostSignup(error));
