@@ -1,19 +1,17 @@
 import * as React from "react";
-import { Field, reduxForm } from 'redux-form';
-import renderField from 'components/Field';
+import { Field, reduxForm } from "redux-form";
+import renderField from "components/Field";
 import Button from "components/Button";
 
-const numbersOnly = (value, previousValue) => (
-  /^\d*\.?\d*?$/.test(value) ? value : previousValue
-);
+const numbersOnly = (value, previousValue) =>
+  /^\d*\.?\d*?$/.test(value) ? value : previousValue;
 
 const Label = ({ updateAmount }) => (
   <p>
     Amount
-    <a 
-      className="help"
-      onClick={updateAmount}
-    >Use Full Balance</a>
+    <a className="help" onClick={updateAmount}>
+      Use Full Balance
+    </a>
   </p>
 );
 
@@ -22,7 +20,8 @@ const TransferForm = ({
   handleSubmit,
   reset,
   submitting,
-  updateAmount }) => (
+  updateAmount
+}) => (
   <form onSubmit={handleSubmit(callAPI)}>
     <Field
       aria-describedby="to"
@@ -59,16 +58,16 @@ const TransferForm = ({
       type="text"
     />
 
-    <div class="field is-grouped u-mt6">
-      <div class="control">
+    <div className="field is-grouped u-mt6">
+      <div className="control">
         <Button
           disabled={submitting}
           className="is-large is-primary"
           type="submit"
-          text={submitting ? 'Submitting...' : 'Submit'}
+          text={submitting ? "Submitting..." : "Submit"}
         />
       </div>
-      <div class="control">
+      <div className="control">
         <Button
           disabled={submitting}
           className="is-large is-secondary"
@@ -81,5 +80,5 @@ const TransferForm = ({
 );
 
 export default reduxForm({
-  form: 'transfer',
+  form: "transfer"
 })(TransferForm);
