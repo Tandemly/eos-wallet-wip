@@ -34,7 +34,6 @@ const api = store => next => action => {
   const clearNotificationActions = [
     SUCCEED_LOGIN,
     SUCCESS_POST_TRANSACTION,
-    SUCCESS_GET_BALANCE,
     SUCCESS_POST_EOS_ACCOUNT,
     DISCONNECT_EOS_ACCOUNT
   ];

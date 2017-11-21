@@ -2,10 +2,12 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import Container from "containers/Transfer";
 import Transactions from "containers/Transactions";
+import Notifications from "containers/Notifications";
 
 const Transfer = () => (
   <div className="columns is-desktop content is-variable is-6">
     <div className="column is-7-desktop is-12-tablet">
+      <Notifications />
       <article className="u-mb6">
         <h2 className="title is-2">Transfer</h2>
         <p>Move funds to another EOS account.</p>
@@ -23,7 +25,6 @@ const Transfer = () => (
         </h3>
 
         <Transactions count={5} />
-
       </article>
     </div>
     <div className="column is-5-desktop is-12-tablet">

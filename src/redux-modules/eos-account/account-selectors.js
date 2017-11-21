@@ -32,3 +32,9 @@ export const selectEOSBalanceDifference = createSelector(
       ? `${balance.symbol}${Math.abs(balance.difference).toFixed(6)}`
       : ""
 );
+
+export const selectEOSPrivateKeys = createSelector(
+  selectEOSActiveKeys,
+  selectEOSOwnerKeys,
+  (activeKeys, ownerKeys) => [activeKeys.privateKey, ownerKeys.privateKey]
+);
