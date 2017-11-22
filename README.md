@@ -1,3 +1,65 @@
+# EOS Web Wallet
+
+This is the web based wallet for EOS. The goal of the web wallet is to eventually be a multi-token wallet; but for now
+is aiming to support the most recent version of EOS.
+
+## Requirements
+The Web Wallet is built to work with our REST/JSON based [API service](https://github.com/Tandemly/eos-api-service) for EOS.
+The Web Wallet is a standard create-react-app React application with the addition of it's own Node server and database. It 
+functions as a standalone web application from a third-party that would operate against the EOS platform.
+
+### Configuration
+The application is configured through a `.env` file.  You can use the provided `.env.example` file to get started. 
+First, clone the application to start
+
+```bash
+$ git clone https://github.com/Tandemly/eos-wallet-wip.git
+$ cd eos-wallet-aip
+$ cp .env.example .env
+```
+
+Follow the instructions below to setup the proper values for your local `.env` to run the application.
+
+#### API Service Connection
+In order for the wallet to connect to the API service you'll need to add the host of the API Service you're connecting to. If 
+this includes a PORT number, simpmly add it to the host.  You can request an api key for use by the application after registering
+a personal account with the API service at that host.
+
+```
+REACT_APP_API_KEY=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MTA4ODkwMjEsInN1YiI6IjVhMGU1NjI0MjdkMTc4MDA3OGZiYzVmYSIsImp0aSI6IiQyYSQxMCQweU4vRU5Dd0ZHazlKVFpJMy5kb2llWmJOa2NYVTFuZGp0aVczcDZIUFNOcDREYTZXSlIwYSIsInJvbGVzIjpbInVzZXIiXX0.14F19VV6lrhFN4jPvrXFospbPRQFkQUrbgpoALyDnPs 
+REACT_APP_API_URI=https://api-service-gpstljgmhy.now.sh
+```
+#### EOSD Connection
+Since the Javascript API needs to have direct access to an eosd node, you can provide the same eosd node used to setup
+the API Service.  You can add these in with the following environment variables. The `_TESTS_URI` is only used for running
+tests in our build environment.
+
+```
+REACT_APP_EOSD_URI=https://demo-eos-deployment-mrvbxqxaro.now.sh
+REACT_APP_EOSD_TESTS_URI=http://localhost:8888
+```
+
+#### Application Database Connection
+The Web Wallet is its own standalone application and has its own persistent datastore.  It uses mongo.  You can choose to
+run a mongo instance yourself or run in a hosted environment.  Use the environment variables similar to the following to 
+setup the mongo host for the application.
+
+```
+MONGO_URI=mongodb://user:pass12345@mongo.host.com:2153/wallet-app-db
+MONGO_URI_TESTS=mongodb://user:pass12345@mongo.host.com:2153/wallet-app-db
+```
+
+### Installation
+Once the environment is setup, you can simply run the application using the following commands:
+
+```bash
+$ yarn 
+$ yarn build
+$ yarn start
+```
+
+## Further Details
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
