@@ -79,7 +79,6 @@ describe("async refresh middleware", () => {
       refreshAction,
       tryGetBalance(account_name),
       tryGetTransactions(account_name),
-      unsetNotification(),
       succeedGetBalance({
         total: balanceResponse.eos_balance,
         staked: balanceResponse.staked_balance,

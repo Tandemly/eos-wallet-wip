@@ -34,7 +34,6 @@ describe("getBalance", () => {
 
     const expectedActions = [
       tryGetBalance(accountName),
-      unsetNotification(),
       succeedGetBalance({
         total: response.eos_balance,
         staked: response.staked_balance,

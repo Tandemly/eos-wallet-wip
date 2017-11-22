@@ -1,4 +1,3 @@
-import fetch from "isomorphic-fetch";
 import moment from "moment";
 import { merge, uniq, map, flatMap } from "lodash";
 import { Buffer } from "buffer";
@@ -63,7 +62,7 @@ const request = async (
     console.log("<resp>", resp);
     await rejectBadResponse(resp);
     // only attempt to parse JSON if proper content-type
-    if (resp.headers.get("content-type").indexOf("json") > -1)
+    if (resp.headers && resp.headers.get("content-type").indexOf("json") > -1)
       return resp.json();
     return resp.text();
   } catch (error) {
@@ -72,7 +71,7 @@ const request = async (
       return Promise.reject(error);
     }
     const data =
-      error.headers.get("content-type").indexOf("json") > -1
+      error.headers && error.headers.get("content-type").indexOf("json") > -1
         ? await error.json()
         : await error.text();
     return Promise.reject(data);
@@ -138,6 +137,7 @@ class APIClient {
 
     try {
       // Get info on head on chain
+      console.log(eosEndpoint);
       const info = await request(`${eosEndpoint}/v1/chain/get_info`);
       const expr = moment(new Date(`${info.head_block_time}Z`))
         .add(60, "seconds")
@@ -165,7 +165,7 @@ class APIClient {
       );
 
       const signatures = [];
-      required_keys.forEach(pubKey => {
+      (required_keys || []).forEach(pubKey => {
         if (!keyMap[pubKey]) {
           throw new Error(
             `APIClient: missing necessary private key for signing, needs private key for ${
