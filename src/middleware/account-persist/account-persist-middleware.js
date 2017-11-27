@@ -8,8 +8,6 @@ import {
   selectWalletUserId,
   selectWalletUserHash
 } from "../../redux-modules/user/user-selectors";
-import { setEOSAccountName } from "../../redux-modules/eos-account/account-actions";
-import { selectEOSAccountName } from "../../redux-modules/eos-account/account-selectors";
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -23,9 +21,6 @@ const persist = store => next => action => {
         selectWalletUserHash(store.getState())
       )
     );
-    delay(1000).then(() => {
-      store.dispatch(setEOSAccountName(selectEOSAccountName(store.getState())));
-    });
     return;
   }
 

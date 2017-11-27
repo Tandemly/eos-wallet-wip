@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { createReducer } from "./index";
 
 const selectAccountState = state =>
   state && state.eosAccount ? state.eosAccount.account : {};
@@ -37,4 +38,9 @@ export const selectEOSPrivateKeys = createSelector(
   selectEOSActiveKeys,
   selectEOSOwnerKeys,
   (activeKeys, ownerKeys) => [activeKeys.privateKey, ownerKeys.privateKey]
+);
+
+export const selectEOSAccountRehydrated = createSelector(
+  selectAccountState,
+  account => (account._persist ? account._persist.rehydrated : false)
 );
