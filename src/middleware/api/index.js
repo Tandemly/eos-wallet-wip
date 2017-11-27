@@ -5,7 +5,8 @@ import { DISCONNECT_EOS_ACCOUNT } from "../../redux-modules/eos-account/account-
 import { FAIL_GET_TRANSACTIONS } from "../../redux-modules/transactions/transactions-actions";
 import {
   FAIL_LOGIN,
-  SUCCEED_LOGIN
+  SUCCEED_LOGIN,
+  LOGOUT
 } from "../../redux-modules/user/user-actions";
 import {
   FAIL_POST_TRANSACTION,
@@ -32,7 +33,8 @@ const api = store => next => action => {
     SUCCEED_LOGIN,
     SUCCESS_POST_TRANSACTION,
     SUCCESS_POST_EOS_ACCOUNT,
-    DISCONNECT_EOS_ACCOUNT
+    DISCONNECT_EOS_ACCOUNT,
+    LOGOUT
   ];
 
   if (

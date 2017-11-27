@@ -70,6 +70,9 @@ const request = async (
     if (typeof error === "string") {
       return Promise.reject(error);
     }
+    if (error instanceof Error) {
+      return Promise.reject(error);
+    }
     const data =
       error.headers && error.headers.get("content-type").indexOf("json") > -1
         ? await error.json()
@@ -184,6 +187,7 @@ class APIClient {
         body: JSON.stringify(transaction)
       });
     } catch (err) {
+      return Promise.reject(err.statusText || err);
       console.error("fetch error:", err);
     }
   }

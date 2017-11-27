@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
-const selectNotificationsState = state => state.notification || {};
+export const selectNotificationsState = state => state.notification || {};
 
-export const selectNotification = createSelector(
-  selectNotificationsState,
-  notifications => notifications.notification
-);
+// export const selectNotification = createSelector(
+//   selectNotificationsState,
+//   notifications => notifications.notification
+// );

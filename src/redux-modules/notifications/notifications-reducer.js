@@ -1,10 +1,8 @@
 import { SET_NOTIFICATION, UNSET_NOTIFICATION } from "./notifications-actions";
 
 const initialState = {
-  notification: {
-    text: "",
-    status: ""
-  }
+  text: "",
+  status: ""
 };
 
 export default (state = initialState, action) => {
