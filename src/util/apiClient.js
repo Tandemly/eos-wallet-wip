@@ -47,9 +47,8 @@ const getScope = messages =>
     ])
   ).sort();
 
-const rejectBadResponse = (response: Response): mixed => {
+const rejectBadResponse = (response: Response): mixed =>
   response.ok || Promise.reject(response);
-};
 
 const request = async (
   path: string,
@@ -187,8 +186,8 @@ class APIClient {
         body: JSON.stringify(transaction)
       });
     } catch (err) {
-      return Promise.reject(err.statusText || err);
       console.error("fetch error:", err);
+      return Promise.reject(err.statusText || err);
     }
   }
 }
