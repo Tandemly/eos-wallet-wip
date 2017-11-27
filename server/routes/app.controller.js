@@ -25,7 +25,6 @@ exports.register = async (req, res, next) => {
  */
 exports.login = async (req, res, next) => {
   try {
-    console.log(req.body);
     const profile = await Profile.findAndValidate(req.body);
     res.status(httpStatus.CREATED);
     return res.json(profile.transform());
