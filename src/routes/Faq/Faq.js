@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 const Faq = () => (
   <div className="content">
@@ -9,9 +9,7 @@ const Faq = () => (
 
     <h2 className="title is-2">FAQs</h2>
 
-    <div className="col-12">
-      Content
-    </div>
+    <p>Coming soon...</p>
   </div>
 );
 

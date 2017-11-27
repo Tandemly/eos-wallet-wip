@@ -15,8 +15,10 @@ const Users = () => (
     <h2 className="title is-2">Users</h2>
 
     <div>
+      <p>Coming soon...</p>
+
       {/*<Filter data={users}>*/}
-      <Container data={users} />
+      {/*<Container data={users} />*/}
       {/*</Filter>*/}
     </div>
   </div>
