@@ -2937,15 +2937,15 @@ enzyme@^3.1.0:
     raf "^3.3.2"
     rst-selector-parser "^2.2.2"
 
-eosjs-api@^1.2.11:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/eosjs-api/-/eosjs-api-1.2.11.tgz#35b35d2f515c8040ee54350b8ef1237f9811aff4"
+eosjs-api@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eosjs-api/-/eosjs-api-2.0.1.tgz#b69afb2a270fda89052bf99f7d6c3c86d3a02ba8"
   dependencies:
     camel-case "^3.0.0"
-    eosjs-json "^1.4.0"
+    eosjs-json "^2.0.2"
     isomorphic-fetch "^2.2.1"
 
-eosjs-ecc@^1.4.0, eosjs-ecc@^1.6.1:
+eosjs-ecc@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/eosjs-ecc/-/eosjs-ecc-1.6.1.tgz#0d8d3d632d080a71efd9766aa89460c93b515a5a"
   dependencies:
@@ -2960,20 +2960,20 @@ eosjs-ecc@^1.4.0, eosjs-ecc@^1.6.1:
     more-entropy "^0.0.7"
     randombytes "^2.0.5"
 
-eosjs-json@^1.4.0, eosjs-json@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/eosjs-json/-/eosjs-json-1.4.1.tgz#b349dd836e66d67d40f145580fb28a82237ebf3c"
+eosjs-json@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/eosjs-json/-/eosjs-json-2.0.2.tgz#ce16552676a356f1cbf5a828fcdc14acd5b43353"
 
-eosjs@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-3.0.5.tgz#e71bb2cdecae0dd2ee76727c1d08b01183992fe3"
+eosjs@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-4.0.2.tgz#f7e44eae72344114922e84c0513626bbeefd2302"
   dependencies:
     binaryen "^37.0.0"
     create-hash "^1.1.3"
-    eosjs-api "^1.2.11"
-    eosjs-ecc "^1.4.0"
-    eosjs-json "^1.4.1"
-    fcbuffer "^1.2.4"
+    eosjs-api "^2.0.1"
+    eosjs-ecc "^1.6.1"
+    eosjs-json "^2.0.2"
+    fcbuffer "^2.0.0"
 
 errno@^0.1.3, errno@^0.1.4:
   version "0.1.4"
@@ -3561,9 +3561,9 @@ fbjs@^0.8.16, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-fcbuffer@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/fcbuffer/-/fcbuffer-1.2.4.tgz#8e9e10e9be43bc50c82733ff5c76df03f8b7f57c"
+fcbuffer@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fcbuffer/-/fcbuffer-2.0.0.tgz#b79ded07c7d776f4aaec60f2cfa067d10a75fa3a"
   dependencies:
     bn.js "^4.11.6"
     bytebuffer "^5.0.1"

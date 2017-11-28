@@ -148,17 +148,17 @@ class APIClient {
 
       // Build transaction from data
       const transaction = {
-        refBlockNum: info.head_block_num & 0xffff,
-        refBlockPrefix: new Buffer(info.head_block_id, "hex").readUInt32LE(8),
+        ref_block_num: info.head_block_num & 0xffff,
+        ref_block_prefix: new Buffer(info.head_block_id, "hex").readUInt32LE(8),
         expiration: expr,
         scope,
-        readscope: [],
+        read_scope: [],
         messages
       };
       // construct a buffer of the transaction to sign
       const trBuffer = Buffer.concat([
         chainId,
-        Fcbuffer.toBuffer(this.structs.Transaction, transaction)
+        Fcbuffer.toBuffer(this.structs.transaction, transaction)
       ]);
 
       const { required_keys } = await this.eos.getRequiredKeys(
