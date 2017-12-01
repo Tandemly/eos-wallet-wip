@@ -5,11 +5,9 @@ import css from "./styles.module.scss";
 import cx from "classnames";
 
 type PropTypes = {
-  data: Array<any>,
+  data: Array<any>
 };
 
-// TODO add paging
-// TODO add count as query params
 const Transactions = ({ count, data = [] }: PropTypes) => (
   <div>
     <List
