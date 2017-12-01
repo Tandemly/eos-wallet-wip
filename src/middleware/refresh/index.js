@@ -17,8 +17,11 @@ import { getProfile } from "../../thunks/profile";
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const interval = 5000;
-let isPolling = false;
 let timer = false;
+
+// local flags for tracking combined state
+let isPolling = false;
+let isLoggedIn = false;
 
 const poll = (fn, intval) => {
   console.log("updating account data...");
@@ -41,34 +44,45 @@ const refresh = store => next => action => {
   //   SET_EOS_ACCOUNT_NAME
   // ];
 
-  const eosAccountName =
-    action.type === SET_EOS_ACCOUNT_NAME
-      ? action.accountName
-      : selectEOSAccountName(store.getState());
-  const isAuthenticated =
-    selectWalletUserAuthenticated(store.getState()) ||
-    action.type === SUCCEED_LOGIN;
+  // const eosAccountName =
+  //   action.type === SET_EOS_ACCOUNT_NAME
+  //     ? action.accountName
+  //     : selectEOSAccountName(store.getState());
+  // const isAuthenticated =
+  //   selectWalletUserAuthenticated(store.getState()) ||
+  //   action.type === SUCCEED_LOGIN;
 
-  // If user is logged in and has valid EOS account
-  // start polling for transaction & balance data
-  if (
-    // triggerActions.some(t => action.type === t) &&
-    eosAccountName &&
-    isAuthenticated &&
-    [SUCCEED_LOGIN, "persist/REHYDRATE"].some(t => action.type === t) &&
-    !isPolling
-  ) {
-    // NOTE it may take up to 3 seconds for a new transaction to process on the blockchain
-    // refreshAccount(store, eosAccountName);
-    isPolling = true;
-    console.log("Staring polling");
-    poll(() => refreshAccount(store, eosAccountName), interval);
-  }
+  // // If user is logged in and has valid EOS account
+  // // start polling for transaction & balance data
+  // if (eosAccountName && isAuthenticated) {
+  //   console.log(
+  //     `[polling] eos_account=${eosAccountName}, authenticated=${
+  //       isAuthenticated
+  //     }, action=${action.type}`
+  //   );
+  // }
+  // if (
+  //   eosAccountName &&
+  //   isAuthenticated &&
+  //   action.type === SUCCEED_LOGIN &&
+  //   !isLoggedIn &&
+  //   !isPolling
+  // ) {
+  //   // NOTE it may take up to 3 seconds for a new transaction to process on the blockchain
+  //   // refreshAccount(store, eosAccountName);
+  //   isLoggedIn = true;
+  //   isPolling = true;
+  //   console.log("[polling] Staring polling");
+  //   poll(() => refreshAccount(store, eosAccountName), interval);
+  // }
   // Clean up when user logs out
-  if (action.type === LOGOUT && isPolling) {
-    console.log("Stopping polling");
-    clearTimeout(timer);
+  if (action.type === LOGOUT) {
+    isLoggedIn = false;
     isPolling = false;
+    if (timer) {
+      console.log("[polling] Stopping polling");
+      clearTimeout(timer);
+    }
   }
 
   next(action);
@@ -76,12 +90,18 @@ const refresh = store => next => action => {
   // TODO: How does this interact with polling transaction/balance info?
   if (
     action.type === "persist/REHYDRATE" &&
+    action.key.endsWith("-account") &&
     selectEOSAccountRehydrated(store.getState())
   ) {
     const account = selectEOSAccountName(store.getState());
-    store.dispatch(getProfile(selectWalletUserId(store.getState())));
-    if (account) {
-      refreshAccount(store, account);
+    const userId = selectWalletUserId(store.getState());
+
+    store.dispatch(getProfile(userId));
+    if (account && userId) {
+      // refreshAccount(store, account);
+      isLoggedIn = true;
+      isPolling = true;
+      poll(() => refreshAccount(store, account), interval);
     }
   }
 };
