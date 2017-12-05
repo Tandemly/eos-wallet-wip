@@ -5,7 +5,7 @@ import { createBrowserHistory as createHistory } from "history";
 import { Provider } from "react-redux";
 import { Router, Route } from "react-router-dom";
 import { PersistGate } from 'redux-persist/es/integration/react'
-import App from "containers/App";
+import App from "./App";
 import Loading from "containers/Loading";
 import { configureStore } from "util/configureStore";
 import { apiRequest } from "util/fetchUtil";

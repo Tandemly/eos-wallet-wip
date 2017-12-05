@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import Balance from "components/Balance";
 import {
   selectEOSBalanceDifference,
   selectEOSTotalBalance
@@ -11,6 +10,4 @@ const mapStateToProps = state => ({
   total: selectEOSTotalBalance(state)
 });
 
-const BalanceContainer = connect(mapStateToProps)(Balance);
-
-export default BalanceContainer;
+export const withCurrentEOSBalance = connect(mapStateToProps);

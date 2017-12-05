@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import Balance from "containers/Balance";
+import { CurrentEOSBalance } from "../Balance";
 import Login from "containers/Login";
 import Shortcuts from "components/Shortcuts";
 import { doLogout } from "../../thunks/login";
@@ -51,7 +51,7 @@ const Menu = props => {
     <div className="menu p-lg">
       {!isAuthenticated && <Login className="aside-login" modal={false} />}
 
-      {isAuthenticated && <Balance />}
+      {isAuthenticated && <CurrentEOSBalance />}
 
       <Shortcuts data={isAuthenticated ? authLinks(props) : unauthLinks} />
     </div>

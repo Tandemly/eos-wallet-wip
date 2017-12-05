@@ -26,5 +26,9 @@
       font-size: 0.5625rem;
       padding-right: 2px;
     }
+    &.minus {
+      background-color: $red;
+      color: $white;
+    }
   }
 }

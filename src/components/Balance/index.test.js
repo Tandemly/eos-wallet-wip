@@ -2,9 +2,9 @@ import * as React from "react";
 import { shallow } from "enzyme";
 import { Provider } from "react-redux";
 import { configureStore } from "util/configureStore";
-import Balance from "./";
+import { CurrentEOSBalance } from "./";
 
-describe("<BalanceContainer />", () => {
+describe("<CurrentEOSBalance /> container", () => {
   it("renders without crashing", () => {
     const { store } = configureStore({
       user: {
@@ -15,7 +15,7 @@ describe("<BalanceContainer />", () => {
     });
     const tree = (
       <Provider store={store}>
-        <Balance />
+        <CurrentEOSBalance />
       </Provider>
     );
 

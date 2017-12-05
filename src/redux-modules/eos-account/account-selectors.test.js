@@ -22,8 +22,7 @@ describe("EOS Account Selectors", () => {
   };
   const total = Math.random() * 100;
   const difference = Math.random() * 100;
-  const symbol = "+";
-  const formattedDifference = `${symbol}${difference.toFixed(4)}`;
+
   const eosState: EOSAccountState = {
     account: {
       accountName,
@@ -33,8 +32,7 @@ describe("EOS Account Selectors", () => {
     balance: {
       loading: false,
       total,
-      difference,
-      symbol
+      difference
     }
   };
   const state = {
@@ -74,10 +72,10 @@ describe("EOS Account Selectors", () => {
   });
 
   describe("balance difference selector", () => {
-    it("should return the formatted difference", () => {
+    it("should return the difference", () => {
       const actual = selectEOSBalanceDifference(state);
 
-      expect(actual).toEqual(formattedDifference);
+      expect(actual).toEqual(difference);
     });
   });
 });

@@ -68,8 +68,7 @@ describe("EOS Balance Reducer", () => {
       ...initialState,
       ...balances,
       loading: false,
-      difference,
-      symbol: difference === 0 ? "" : difference >= 0 ? "+" : "-"
+      difference
     };
 
     const actualState: BalanceState = reducer(

@@ -4,28 +4,26 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Header from "components/Header";
-import Footer from "components/Footer";
-import Menu from "components/Menu";
-import Modal from "components/Modal";
-import Login from "routes/Login";
-import Signup from "routes/Signup";
-import About from "routes/About";
-import Faq from "routes/Faq";
-import Transfer from "routes/Transfer";
-import Transactions from "routes/Transactions";
-import Users from "routes/Users";
-import Profile from "routes/Profile";
-import Accounts from "routes/Accounts";
-import EditProfile from "routes/EditProfile";
-import NoMatch from "routes/NoMatch";
-import { closeMenu } from "../../redux-modules/app/app-actions";
-import { doLogout } from "../../thunks/login";
-
+import Header from "./components/Header/index";
+import Footer from "./components/Footer/index";
+import Menu from "./components/Menu/index";
+import Modal from "./components/Modal/index";
+import Login from "./routes/Login/index";
+import Signup from "./routes/Signup/index";
+import About from "./routes/About/index";
+import Faq from "./routes/Faq/index";
+import Transfer from "./routes/Transfer/index";
+import Transactions from "./routes/Transactions/index";
+import Users from "./routes/Users/index";
+import Accounts from "./routes/Accounts/index";
+import EditProfile from "./routes/EditProfile/index";
+import NoMatch from "./routes/NoMatch/index";
+import { closeMenu } from "./redux-modules/app/app-actions";
+import { doLogout } from "./thunks/login";
+import { toggleMenu } from "./redux-modules/app/app-actions";
+import { selectWalletUserAuthenticated } from "./redux-modules/user/user-selectors";
+import { selectIsMenuOpen } from "./redux-modules/app/app-selectors";
 import "./App.scss";
-import { toggleMenu } from "../../redux-modules/app/app-actions";
-import { selectWalletUserAuthenticated } from "../../redux-modules/user/user-selectors";
-import { selectIsMenuOpen } from "../../redux-modules/app/app-selectors";
 
 const RoutesAuthenticated = ({ isAuthenticated, location }) =>
   !isAuthenticated ? (
@@ -38,7 +36,6 @@ const RoutesAuthenticated = ({ isAuthenticated, location }) =>
         component={Transactions}
         key="transactions"
       />,
-      <Route path="/user/:id" component={Profile} key="user" />,
       <Route path="/accounts" component={Accounts} key="accounts" />,
       <Route path="/profile" component={EditProfile} key="profile" />
     ]

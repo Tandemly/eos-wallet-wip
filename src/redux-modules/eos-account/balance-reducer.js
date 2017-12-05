@@ -20,20 +20,20 @@ export default (state: BalanceState = initialState, action: Action) => {
         ...state,
         loading: true
       };
-    /* eslint-disable no-nested-ternary, no-case-declarations */
     case SUCCESS_GET_BALANCE:
-      const newTotal: number = action.balance.total;
-      const oldTotal: number = state.total;
-      const difference = newTotal - oldTotal;
+      if (action.balance.total !== state.total) {
+        const newTotal: number = action.balance.total;
+        const oldTotal: number = state.total;
+        const difference = newTotal - oldTotal;
 
-      return {
-        ...state,
-        ...action.balance,
-        loading: false,
-        difference,
-        symbol: difference === 0 ? "" : difference >= 0 ? "+" : "-"
-      };
-    /* eslint-enable no-nested-ternary, no-case-declarations */
+        return {
+          ...state,
+          ...action.balance,
+          loading: false,
+          difference
+        };
+      }
+      return { ...state, loading: false };
     case FAIL_GET_BALANCE:
       return {
         ...state,
