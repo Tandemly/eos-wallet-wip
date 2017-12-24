@@ -94,7 +94,7 @@ First, clone the application from the repo and create the local `.env` file:
 
 ```bash
 $ git clone https://github.com/Tandemly/eos-wallet-wip.git
-$ cd eos-wallet-aip
+$ cd eos-wallet-wip
 $ cp .env.example .env
 ```
 
